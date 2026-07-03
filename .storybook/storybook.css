@@ -1,0 +1,29 @@
+/*
+ * Tailwind Preflight가 Storybook Docs 페이지(.sbdocs)의 기본 테이블 스타일을
+ * 덮어써서 깨지는 문제를 복구합니다. 이 파일은 .storybook/preview.ts에서만
+ * import하고, 앱의 globals.css에는 포함하지 않습니다.
+ */
+
+.sbdocs,
+.sbdocs * {
+  font-family: var(--font-sans) !important;
+}
+
+.sbdocs table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+}
+
+.sbdocs th,
+.sbdocs td {
+  border: 1px solid var(--color-border-default);
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.sbdocs th {
+  background-color: var(--color-surface-brand);
+  color: var(--color-text-on-brand) !important;
+  font-weight: 600;
+}
