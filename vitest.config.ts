@@ -1,7 +1,9 @@
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
+import react from '@vitejs/plugin-react';
 import { playwright } from '@vitest/browser-playwright';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig } from 'vitest/config';
 
 const dirname =
@@ -26,6 +28,17 @@ export default defineConfig({
             provider: playwright({}),
             instances: [{ browser: 'chromium' }],
           },
+        },
+      },
+      {
+        extends: true,
+        plugins: [react(), tsconfigPaths()],
+        test: {
+          name: 'unit',
+          environment: 'jsdom',
+          include: ['**/test.{ts,tsx}', '**/*.test.ts'],
+          exclude: ['**/node_modules/**', '**/*.stories.*'],
+          setupFiles: [path.join(dirname, 'vitest.setup.ts')],
         },
       },
     ],
