@@ -1,0 +1,21 @@
+@import 'tailwindcss';
+
+@import './theme/index.css';
+@import './typography.css';
+
+@import './utilities.css';
+
+@layer base {
+  html {
+    text-rendering: optimizeLegibility;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply font-sans;
+
+    color: var(--color-text-primary);
+    background-color: var(--color-surface-background);
+  }
+}

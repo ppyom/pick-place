@@ -1,0 +1,87 @@
+@theme {
+  /*
+   * Font Sans
+   */
+  --font-sans: 'SUITE Variable', 'SUITE', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/*
+ * Heading
+ */
+@utility typo-heading-xl {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 48px;
+}
+@utility typo-heading-l {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+}
+@utility typo-heading-m {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 36px;
+}
+
+/*
+ * Title
+ */
+@utility typo-title-l {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+}
+@utility typo-title-m {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+}
+@utility typo-title-s {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+/*
+ * Body
+ */
+@utility typo-body-l {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+}
+@utility typo-body-m {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+@utility typo-body-s {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+/*
+ * Label
+ */
+@utility typo-label-l {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+@utility typo-label-m {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+/*
+ * Caption
+ */
+@utility typo-caption {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}

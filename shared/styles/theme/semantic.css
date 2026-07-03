@@ -1,0 +1,64 @@
+@theme {
+  /*
+   * Surface
+   */
+  --color-surface-background: var(--primitive-neutral-50);
+  --color-surface-brand: var(--primitive-primary-500);
+  --color-surface-brand-subtle: var(--primitive-primary-50);
+  --color-surface-secondary: var(--primitive-secondary-200);
+  --color-surface-card: var(--primitive-white);
+  --color-surface-elevated: var(--primitive-white);
+  --color-surface-disabled: var(--primitive-neutral-100);
+  --color-surface-overlay: color-mix(in srgb, var(--primitive-black) 50%, transparent);
+  --color-surface-inverse: var(--primitive-neutral-900);
+
+  /*
+   * Text
+   */
+  --color-text-primary: var(--primitive-neutral-900);
+  --color-text-secondary: var(--primitive-neutral-600);
+  --color-text-tertiary: var(--primitive-neutral-500);
+  --color-text-disabled: var(--primitive-neutral-400);
+
+  --color-text-inverse: var(--primitive-white);
+  --color-text-on-brand: var(--primitive-white);
+  --color-text-brand: var(--primitive-primary-500);
+
+  /*
+   * Border
+   */
+  --color-border-default: var(--primitive-neutral-200);
+  --color-border-strong: var(--primitive-neutral-300);
+  --color-border-disabled: var(--primitive-neutral-100);
+  --color-border-brand: var(--primitive-primary-500);
+  --color-border-focus: var(--primitive-primary-600);
+  --color-border-error: var(--primitive-error-500);
+
+  /*
+   * Status / Success
+   */
+  --color-status-success-background: var(--primitive-success-100);
+  --color-status-success-border: var(--primitive-success-300);
+  --color-status-success-text: var(--primitive-success-500);
+
+  /*
+   * Status / Warning
+   */
+  --color-status-warning-background: var(--primitive-warning-100);
+  --color-status-warning-border: var(--primitive-warning-300);
+  --color-status-warning-text: var(--primitive-warning-500);
+
+  /*
+   * Status / Error
+   */
+  --color-status-error-background: var(--primitive-error-100);
+  --color-status-error-border: var(--primitive-error-300);
+  --color-status-error-text: var(--primitive-error-500);
+
+  /*
+   * Status / Info
+   */
+  --color-status-info-background: var(--primitive-info-100);
+  --color-status-info-border: var(--primitive-info-300);
+  --color-status-info-text: var(--primitive-info-500);
+}

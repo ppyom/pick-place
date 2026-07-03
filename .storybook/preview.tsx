@@ -1,6 +1,9 @@
 import type { Preview } from '@storybook/nextjs-vite';
 
 import '@/app/globals.css';
+import { suite } from '../shared/assets/fonts';
+
+import '@/shared/styles/globals.css';
 
 const preview: Preview = {
   parameters: {
@@ -18,6 +21,14 @@ const preview: Preview = {
       test: 'todo',
     },
   },
+
+  decorators: [
+    (Story) => (
+      <div className={suite.variable}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default preview;
