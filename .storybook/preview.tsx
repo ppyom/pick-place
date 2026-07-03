@@ -7,6 +7,11 @@ import './storybook.css';
 
 const preview: Preview = {
   parameters: {
+    options: {
+      storySort: {
+        order: ['Design System', 'UI', 'Entities', 'Features', 'Widgets'],
+      },
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
