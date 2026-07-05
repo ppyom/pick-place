@@ -1,0 +1,54 @@
+name: 🐛 버그 리포트
+description: 예상과 다르게 동작하는 부분을 신고합니다.
+title: '🐛 '
+labels: ['bug']
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: 버그 설명
+      description: 어떤 문제가 발생했는지 설명해주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 재현 방법
+      description: 어떻게 하면 이 버그를 재현할 수 있나요?
+      placeholder: |
+        1. '...'로 이동
+        2. '...' 클릭
+        3. 에러 발생
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 기대한 동작
+      description: 원래 어떻게 동작해야 하나요?
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: 스크린샷
+      description: 가능하다면 스크린샷이나 스크린 레코딩을 첨부해주세요.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: 환경
+      multiple: true
+      options:
+        - Chrome
+        - Safari
+        - iOS Safari (모바일)
+        - Android Chrome (모바일)
+        - 기타
+    validations:
+      required: false
