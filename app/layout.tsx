@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import { AppProviders } from '@/providers';
+
 import { suite } from '@/shared/assets/fonts';
 
 import '@/shared/styles/globals.css';
@@ -16,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={suite.variable}>
-      <body>{children}</body>
+      <body>
+        <AppProviders>{children}</AppProviders>
+      </body>
     </html>
   );
 }
