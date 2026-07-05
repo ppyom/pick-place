@@ -1,6 +1,6 @@
 name: 🐛 버그 리포트
 description: 예상과 다르게 동작하는 부분을 신고합니다.
-title: '🐛 '
+title: '[Bug] '
 labels: ['bug']
 body:
   - type: textarea
@@ -50,5 +50,17 @@ body:
         - iOS Safari (모바일)
         - Android Chrome (모바일)
         - 기타
+    validations:
+      required: false
+
+  - type: textarea
+    id: checklist
+    attributes:
+      label: 체크리스트
+      description: 수정 과정에서 해야 할 항목들을 나열해주세요. 필요에 맞게 자유롭게 수정/추가하세요.
+      value: |
+        - [ ] 원인 파악
+        - [ ] 수정
+        - [ ] 재현 시나리오로 재확인
     validations:
       required: false
