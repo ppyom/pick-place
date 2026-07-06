@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { expect, within } from 'storybook/test';
 
 import { Icon } from '@/shared/ui/icon';
 
@@ -73,10 +74,22 @@ export const Loading: Story = {
   args: {
     isLoading: true,
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button');
+
+    await expect(button).toBeDisabled();
+  },
 };
 
 export const Disabled: Story = {
   args: {
     disabled: true,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button');
+
+    await expect(button).toBeDisabled();
   },
 };
