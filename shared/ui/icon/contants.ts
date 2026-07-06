@@ -8,6 +8,7 @@ import {
   ForkKnifeIcon,
   HeartIcon,
   HomeIcon,
+  Loader2Icon,
   MapPinIcon,
   MessageSquareTextIcon,
   MoreHorizontalIcon,
@@ -42,6 +43,7 @@ export const ICONS = {
   tags: TagsIcon,
   memo: MessageSquareTextIcon,
   heart: HeartIcon,
+  loading: Loader2Icon,
 
   // Bottom Navigation
   home: HomeIcon,
