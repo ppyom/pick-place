@@ -8,7 +8,7 @@ import { cn } from '@/shared/utils/cn';
 
 import { type ButtonVariantProps, buttonVariants, LOADING_ICON_SIZE } from './constants';
 
-interface ButtonProps extends Omit<HTMLMotionProps<'button'>, 'children'>, ButtonVariantProps {
+interface Props extends Omit<HTMLMotionProps<'button'>, 'children'>, ButtonVariantProps {
   isLoading?: boolean;
   children: ReactNode;
 }
@@ -21,7 +21,7 @@ export function Button({
   children,
   className,
   ...props
-}: ButtonProps) {
+}: Props) {
   const isDisabled = disabled || isLoading;
 
   return (
@@ -40,4 +40,4 @@ export function Button({
   );
 }
 
-export type { ButtonProps };
+export type { Props };
