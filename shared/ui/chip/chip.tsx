@@ -9,13 +9,22 @@ interface Props
   children: ReactNode;
 }
 
-export function Chip({ children, className, size = 'md', readonly, selected, ...props }: Props) {
+export function Chip({
+  children,
+  className,
+  size = 'md',
+  readonly,
+  selected,
+  onClick,
+  ...props
+}: Props) {
   return (
     <button
       type="button"
       className={cn(chipVariants({ size, readonly, selected }), className)}
-      aria-pressed={selected ?? undefined}
-      disabled={readonly ?? undefined}
+      aria-pressed={readonly ? undefined : (selected ?? undefined)}
+      aria-disabled={readonly ?? undefined}
+      onClick={readonly ? undefined : onClick}
       {...props}
     >
       {children}
