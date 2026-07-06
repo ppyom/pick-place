@@ -20,7 +20,7 @@ const sizeStyles = {
 };
 
 export const buttonVariants = cva(
-  'flex items-center justify-center rounded-lg transition-colors disabled:cursor-not-allowed disabled:border-transparent disabled:bg-surface-disabled disabled:text-text-disabled',
+  'flex items-center justify-center rounded-md transition-colors disabled:cursor-not-allowed disabled:border-transparent disabled:bg-surface-disabled disabled:text-text-disabled',
   {
     variants: {
       variant: variantStyles,
