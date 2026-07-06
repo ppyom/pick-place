@@ -8,7 +8,7 @@ import { BUTTON_SIZES, BUTTON_VARIANTS } from './constants';
 const meta = {
   title: 'UI/Button',
   component: Button,
-  tags: [],
+  tags: ['!dev'],
   argTypes: {
     variant: {
       control: 'radio',
