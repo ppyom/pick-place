@@ -1,112 +1,112 @@
-:root {
+@theme {
   /*
    * White / Black
    */
-  --primitive-white: #ffffff;
-  --primitive-black: #000000;
+  --color-primitive-white: #ffffff;
+  --color-primitive-black: #000000;
 
   /*
    * Primary
    */
-  --primitive-primary-50: #f7f8f3;
-  --primitive-primary-100: #eef1e7;
-  --primitive-primary-200: #dde3d0;
-  --primitive-primary-300: #cbd4b8;
-  --primitive-primary-400: #afbc93;
-  --primitive-primary-500: #88976c;
-  --primitive-primary-600: #74815c;
-  --primitive-primary-700: #606b4d;
-  --primitive-primary-800: #4b543c;
-  --primitive-primary-900: #363d2c;
-  --primitive-primary-950: #23281d;
+  --color-primitive-primary-50: #f7f8f3;
+  --color-primitive-primary-100: #eef1e7;
+  --color-primitive-primary-200: #dde3d0;
+  --color-primitive-primary-300: #cbd4b8;
+  --color-primitive-primary-400: #afbc93;
+  --color-primitive-primary-500: #88976c;
+  --color-primitive-primary-600: #74815c;
+  --color-primitive-primary-700: #606b4d;
+  --color-primitive-primary-800: #4b543c;
+  --color-primitive-primary-900: #363d2c;
+  --color-primitive-primary-950: #23281d;
 
   /*
    * Secondary
    */
-  --primitive-secondary-50: #fdfcf9;
-  --primitive-secondary-100: #fbf8f2;
-  --primitive-secondary-200: #f6f1e7;
-  --primitive-secondary-300: #e8e0d0;
-  --primitive-secondary-400: #d7ccb7;
-  --primitive-secondary-500: #c5b8a0;
-  --primitive-secondary-600: #ab9e87;
-  --primitive-secondary-700: #8c816e;
-  --primitive-secondary-800: #6d6457;
-  --primitive-secondary-900: #4d473f;
-  --primitive-secondary-950: #302c27;
+  --color-primitive-secondary-50: #fdfcf9;
+  --color-primitive-secondary-100: #fbf8f2;
+  --color-primitive-secondary-200: #f6f1e7;
+  --color-primitive-secondary-300: #e8e0d0;
+  --color-primitive-secondary-400: #d7ccb7;
+  --color-primitive-secondary-500: #c5b8a0;
+  --color-primitive-secondary-600: #ab9e87;
+  --color-primitive-secondary-700: #8c816e;
+  --color-primitive-secondary-800: #6d6457;
+  --color-primitive-secondary-900: #4d473f;
+  --color-primitive-secondary-950: #302c27;
 
   /*
    * Neutral
    */
-  --primitive-neutral-50: #fafafa;
-  --primitive-neutral-100: #f5f5f5;
-  --primitive-neutral-200: #e5e5e5;
-  --primitive-neutral-300: #d4d4d4;
-  --primitive-neutral-400: #a3a3a3;
-  --primitive-neutral-500: #737373;
-  --primitive-neutral-600: #525252;
-  --primitive-neutral-700: #404040;
-  --primitive-neutral-800: #262626;
-  --primitive-neutral-900: #171717;
-  --primitive-neutral-950: #0a0a0a;
+  --color-primitive-neutral-50: #fafafa;
+  --color-primitive-neutral-100: #f5f5f5;
+  --color-primitive-neutral-200: #e5e5e5;
+  --color-primitive-neutral-300: #d4d4d4;
+  --color-primitive-neutral-400: #a3a3a3;
+  --color-primitive-neutral-500: #737373;
+  --color-primitive-neutral-600: #525252;
+  --color-primitive-neutral-700: #404040;
+  --color-primitive-neutral-800: #262626;
+  --color-primitive-neutral-900: #171717;
+  --color-primitive-neutral-950: #0a0a0a;
 
   /*
    * Success
    */
-  --primitive-success-50: #f4f8f2;
-  --primitive-success-100: #e6f1e2;
-  --primitive-success-200: #cde3c6;
-  --primitive-success-300: #afd1a5;
-  --primitive-success-400: #8db97f;
-  --primitive-success-500: #6f9e63;
-  --primitive-success-600: #5c8551;
-  --primitive-success-700: #4b6c42;
-  --primitive-success-800: #395334;
-  --primitive-success-900: #283a25;
-  --primitive-success-950: #182317;
+  --color-primitive-success-50: #f4f8f2;
+  --color-primitive-success-100: #e6f1e2;
+  --color-primitive-success-200: #cde3c6;
+  --color-primitive-success-300: #afd1a5;
+  --color-primitive-success-400: #8db97f;
+  --color-primitive-success-500: #6f9e63;
+  --color-primitive-success-600: #5c8551;
+  --color-primitive-success-700: #4b6c42;
+  --color-primitive-success-800: #395334;
+  --color-primitive-success-900: #283a25;
+  --color-primitive-success-950: #182317;
 
   /*
    * Warning
    */
-  --primitive-warning-50: #fdf9f1;
-  --primitive-warning-100: #faf0dd;
-  --primitive-warning-200: #f3deb2;
-  --primitive-warning-300: #eccb87;
-  --primitive-warning-400: #e3b660;
-  --primitive-warning-500: #d8a64a;
-  --primitive-warning-600: #b7893d;
-  --primitive-warning-700: #936e31;
-  --primitive-warning-800: #705326;
-  --primitive-warning-900: #4f3a1b;
-  --primitive-warning-950: #2e2110;
+  --color-primitive-warning-50: #fdf9f1;
+  --color-primitive-warning-100: #faf0dd;
+  --color-primitive-warning-200: #f3deb2;
+  --color-primitive-warning-300: #eccb87;
+  --color-primitive-warning-400: #e3b660;
+  --color-primitive-warning-500: #d8a64a;
+  --color-primitive-warning-600: #b7893d;
+  --color-primitive-warning-700: #936e31;
+  --color-primitive-warning-800: #705326;
+  --color-primitive-warning-900: #4f3a1b;
+  --color-primitive-warning-950: #2e2110;
 
   /*
    * Error
    */
-  --primitive-error-50: #fdf5f5;
-  --primitive-error-100: #f9e7e7;
-  --primitive-error-200: #f2cfcf;
-  --primitive-error-300: #e8b2b2;
-  --primitive-error-400: #da8e8e;
-  --primitive-error-500: #c96a6a;
-  --primitive-error-600: #a95656;
-  --primitive-error-700: #884444;
-  --primitive-error-800: #663333;
-  --primitive-error-900: #462323;
-  --primitive-error-950: #291414;
+  --color-primitive-error-50: #fdf5f5;
+  --color-primitive-error-100: #f9e7e7;
+  --color-primitive-error-200: #f2cfcf;
+  --color-primitive-error-300: #e8b2b2;
+  --color-primitive-error-400: #da8e8e;
+  --color-primitive-error-500: #c96a6a;
+  --color-primitive-error-600: #a95656;
+  --color-primitive-error-700: #884444;
+  --color-primitive-error-800: #663333;
+  --color-primitive-error-900: #462323;
+  --color-primitive-error-950: #291414;
 
   /*
    * Info
    */
-  --primitive-info-50: #f3f8fb;
-  --primitive-info-100: #e4f0f7;
-  --primitive-info-200: #c7e0ee;
-  --primitive-info-300: #a9d0e5;
-  --primitive-info-400: #89bdd8;
-  --primitive-info-500: #6fa8c6;
-  --primitive-info-600: #5a8da7;
-  --primitive-info-700: #487287;
-  --primitive-info-800: #365665;
-  --primitive-info-900: #253c46;
-  --primitive-info-950: #15242a;
+  --color-primitive-info-50: #f3f8fb;
+  --color-primitive-info-100: #e4f0f7;
+  --color-primitive-info-200: #c7e0ee;
+  --color-primitive-info-300: #a9d0e5;
+  --color-primitive-info-400: #89bdd8;
+  --color-primitive-info-500: #6fa8c6;
+  --color-primitive-info-600: #5a8da7;
+  --color-primitive-info-700: #487287;
+  --color-primitive-info-800: #365665;
+  --color-primitive-info-900: #253c46;
+  --color-primitive-info-950: #15242a;
 }
