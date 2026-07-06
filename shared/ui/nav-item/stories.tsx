@@ -9,7 +9,7 @@ const iconNames = Object.keys(ICONS) as Array<keyof typeof ICONS>;
 const meta = {
   title: 'UI/NavItem',
   component: NavItem,
-  tags: ['autodocs'],
+  tags: ['!dev'],
   argTypes: {
     icon: { control: 'select', options: iconNames },
     active: { control: 'boolean' },
