@@ -8,7 +8,7 @@ import { Chip } from './chip';
 const meta = {
   title: 'UI/Chip',
   component: Chip,
-  tags: [],
+  tags: ['!dev'],
   argTypes: {
     size: {
       control: 'radio',
