@@ -17,7 +17,7 @@ export function BottomNavigation({ className }: Props) {
   return (
     <nav
       className={cn(
-        'fixed inset-x-0 bottom-0 z-10 mx-auto flex h-15 w-full max-w-3xl items-center justify-between',
+        'container-app fixed inset-x-0 bottom-0 z-10 flex h-15 items-center justify-between',
         'bg-surface-elevated shadow-elevation-s border-t',
         'pb-[env(safe-area-inset-bottom)]',
         className,
