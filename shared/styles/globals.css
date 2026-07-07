@@ -18,4 +18,8 @@
     color: var(--color-text-primary);
     background-color: var(--color-surface-background);
   }
+
+  * {
+    @apply border-border-default;
+  }
 }
