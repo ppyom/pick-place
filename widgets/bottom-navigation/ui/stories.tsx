@@ -5,7 +5,7 @@ import { BottomNavigation } from './bottom-navigation';
 const meta = {
   title: 'Widgets/BottomNavigation',
   component: BottomNavigation,
-  tags: [],
+  tags: ['!dev'],
 } satisfies Meta<typeof BottomNavigation>;
 
 export default meta;
