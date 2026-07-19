@@ -5,7 +5,7 @@ import { Onboarding } from './onboarding';
 const meta = {
   title: 'Widgets/Onboarding',
   component: Onboarding,
-  tags: [],
+  tags: ['!dev'],
   parameters: {
     layout: 'fullscreen',
   },
