@@ -37,7 +37,7 @@ export default defineConfig({
           name: 'unit',
           environment: 'jsdom',
           globals: true,
-          include: ['**/test.{ts,tsx}', '**/*.test.ts'],
+          include: ['**/test.{ts,tsx}', '**/*.test.{ts,tsx}'],
           exclude: ['**/node_modules/**', '**/*.stories.*'],
           setupFiles: [path.join(dirname, 'vitest.setup.ts')],
         },
