@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { expect, userEvent, within } from 'storybook/test';
 
 import { ICONS } from '@/shared/ui/icon';
 
@@ -51,4 +52,30 @@ export const AllStatuses: Story = {
       <Input {...args} disabled defaultValue="disabled 상태" />
     </div>
   ),
+};
+
+// 입력 값 변경 동작 검증
+export const Typing: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('textbox');
+
+    await userEvent.type(input, '성수동 카페');
+
+    await expect(input).toHaveValue('성수동 카페');
+  },
+};
+
+// disabled 시 입력 차단 검증
+export const DisabledBlocksInput: Story = {
+  args: { disabled: true },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('textbox');
+
+    await userEvent.type(input, '입력 시도');
+
+    await expect(input).toBeDisabled();
+    await expect(input).toHaveValue('');
+  },
 };
