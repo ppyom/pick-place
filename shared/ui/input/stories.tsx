@@ -10,7 +10,7 @@ const iconNames = Object.keys(ICONS) as Array<keyof typeof ICONS>;
 const meta = {
   title: 'UI/Input',
   component: Input,
-  tags: [],
+  tags: ['!dev'],
   argTypes: {
     status: { control: 'inline-radio', options: INPUT_STATUSES },
     leftIcon: { control: 'select', options: [undefined, ...iconNames] },

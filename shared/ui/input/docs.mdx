@@ -1,0 +1,132 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as InputStories from './stories';
+
+<Meta of={InputStories} />
+
+# Input
+
+텍스트 입력을 받는 폼 컨트롤입니다. `Default` / `Error` / `Disabled` 상태를 지원하며, 왼쪽에 아이콘을 붙일 수 있습니다. `forwardRef`를 지원해 React Hook Form 등 폼 라이브러리와 연동할 수 있습니다.
+
+<Canvas of={InputStories.Default} />
+
+## Props
+
+<Controls />
+
+## Status
+
+<Canvas of={InputStories.AllStatuses} />
+
+<table>
+  <thead>
+    <tr>
+      <th>상태</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>default</code>
+      </td>
+      <td>기본 상태. 포커스 시 브랜드 컬러 링이 표시됩니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>error</code>
+      </td>
+      <td>유효성 검증 실패 등 오류 상태. 배경과 링이 error 컬러로 바뀝니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>disabled</code>
+      </td>
+      <td>
+        native <code>disabled</code> 속성 사용. 포커스와 입력이 모두 차단됩니다.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Left Icon
+
+`leftIcon` prop에 `IconName`을 넘기면 왼쪽에 아이콘이 표시됩니다. 아이콘 컬러는 status에 따라 자동으로 바뀝니다(`default` → brand, `error` → error).
+
+<Canvas of={InputStories.WithLeftIcon} />
+
+## Design Tokens
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Input/Background</td>
+      <td>Surface/Brand-Subtle</td>
+    </tr>
+    <tr>
+      <td>Input/Background-Error</td>
+      <td>Status/Error/Background</td>
+    </tr>
+    <tr>
+      <td>Input/Border-Focus</td>
+      <td>Border/Brand</td>
+    </tr>
+    <tr>
+      <td>Input/Border-Error</td>
+      <td>Status/Error/Border</td>
+    </tr>
+    <tr>
+      <td>Input/Text</td>
+      <td>Text/Primary</td>
+    </tr>
+    <tr>
+      <td>Input/Placeholder</td>
+      <td>Text/Tertiary</td>
+    </tr>
+    <tr>
+      <td>Input/Disabled/Background</td>
+      <td>Surface/Disabled</td>
+    </tr>
+    <tr>
+      <td>Input/Disabled/Text</td>
+      <td>Text/Disabled</td>
+    </tr>
+  </tbody>
+</table>
+
+> `Input/Border`는 평소엔 투명(`ring-transparent`)이고 포커스 시에만 `Input/Border-Focus`(Border/Brand)로 링이 표시됩니다.
+
+## Usage
+
+### 기본 사용
+
+```tsx
+<Input placeholder="장소를 검색해보세요" />
+```
+
+### 아이콘과 함께
+
+```tsx
+<Input leftIcon="search" placeholder="장소를 검색해보세요" />
+```
+
+### 에러 상태
+
+```tsx
+<Input status="error" defaultValue="이미 사용 중인 이름이에요" />
+```
+
+### React Hook Form 연동
+
+`forwardRef`를 지원하므로 `register`를 그대로 스프레드할 수 있습니다.
+
+```tsx
+const { register } = useForm();
+
+<Input {...register('name')} placeholder="이름" />;
+```
