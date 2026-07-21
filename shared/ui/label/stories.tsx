@@ -7,7 +7,7 @@ import { Label } from './label';
 const meta: Meta<typeof Label> = {
   title: 'UI/Label',
   component: Label,
-  tags: ['autodocs'],
+  tags: ['!dev'],
   argTypes: {
     htmlFor: { control: 'text' },
     required: { control: 'boolean' },

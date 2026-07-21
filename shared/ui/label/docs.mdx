@@ -1,0 +1,87 @@
+import { Meta, Canvas, Controls, Story } from '@storybook/addon-docs/blocks';
+
+import * as LabelStories from './stories';
+
+<Meta of={LabelStories} />
+
+# Label
+
+Form Input과 함께 쓰이는 라벨 컴포넌트입니다. `htmlFor`를 필수로 받아 접근성을 위한 label-input 연결을 강제합니다.
+
+## Default
+
+<Canvas of={LabelStories.Default} />
+
+## Required
+
+`required` prop을 `true`로 주면 필수 입력 표시(`*`)가 추가됩니다.
+
+<Canvas of={LabelStories.Required} />
+
+## With Input
+
+실제 Input 컴포넌트와 함께 사용했을 때의 배치 예시입니다.
+
+<Canvas of={LabelStories.WithInput} />
+
+## Props
+
+<table>
+  <thead>
+    <tr>
+      <th>Prop</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>htmlFor</td>
+      <td>string</td>
+      <td>-</td>
+      <td>연결할 input의 id (필수)</td>
+    </tr>
+    <tr>
+      <td>children</td>
+      <td>ReactNode</td>
+      <td>-</td>
+      <td>라벨 텍스트</td>
+    </tr>
+    <tr>
+      <td>required</td>
+      <td>boolean</td>
+      <td>false</td>
+      <td>필수 입력 여부 표시 (* 아이콘)</td>
+    </tr>
+  </tbody>
+</table>
+
+## Design Tokens
+
+<table>
+  <thead>
+    <tr>
+      <th>용도</th>
+      <th>Token</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>텍스트</td>
+      <td>Text/Primary</td>
+    </tr>
+    <tr>
+      <td>Typography</td>
+      <td>Label/M</td>
+    </tr>
+    <tr>
+      <td>필수 표시(*)</td>
+      <td>Status/Error/Text</td>
+    </tr>
+  </tbody>
+</table>
+
+## Accessibility
+
+- `htmlFor`를 필수 prop으로 받아 label과 input의 연결을 강제합니다.
