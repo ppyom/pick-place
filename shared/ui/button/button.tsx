@@ -39,5 +39,3 @@ export function Button({
     </motion.button>
   );
 }
-
-export type { Props };
