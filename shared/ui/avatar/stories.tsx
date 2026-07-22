@@ -5,7 +5,7 @@ import { Avatar } from './avatar';
 const meta: Meta<typeof Avatar> = {
   title: 'UI/Avatar',
   component: Avatar,
-  tags: [],
+  tags: ['!dev'],
   args: {
     alt: '귀여운고양이',
     src: 'https://github.com/ppyom.png',

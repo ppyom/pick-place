@@ -1,0 +1,103 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+
+import * as AvatarStories from './stories';
+
+<Meta of={AvatarStories} />
+
+# Avatar
+
+프로필 이미지를 원형으로 표시하는 컴포넌트입니다. 이미지 로드에 실패하면 이니셜 또는 아이콘으로 대체(fallback)됩니다.
+
+<Canvas of={AvatarStories.Default} />
+
+## Sizes
+
+용도를 기준으로 사이즈를 구분합니다.
+
+<table>
+  <thead>
+    <tr>
+      <th>Size</th>
+      <th>px</th>
+      <th>용도</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>inline</td>
+      <td>16</td>
+      <td>인라인 텍스트 옆 (댓글 등)</td>
+    </tr>
+    <tr>
+      <td>list</td>
+      <td>24</td>
+      <td>리스트 아이템</td>
+    </tr>
+    <tr>
+      <td>base</td>
+      <td>32</td>
+      <td>기본 (헤더, 네비 등)</td>
+    </tr>
+    <tr>
+      <td>card</td>
+      <td>64</td>
+      <td>카드 UI</td>
+    </tr>
+    <tr>
+      <td>profile</td>
+      <td>128</td>
+      <td>마이페이지/프로필 상세</td>
+    </tr>
+  </tbody>
+</table>
+
+<Canvas of={AvatarStories.Sizes} />
+
+## Fallback 우선순위
+
+- `src` 로드 성공 시 이미지를 표시합니다.
+- 로드 실패하거나 `src`가 없으면 `fallbackText`를 사이즈별 글자 수만큼 잘라 이니셜로 표시합니다.
+- `fallbackText`도 없으면 기본 아이콘을 표시합니다.
+
+### 사이즈별 이니셜 글자 수
+
+<table>
+  <thead>
+    <tr>
+      <th>Size</th>
+      <th>글자 수</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>inline</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>list</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>base</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>card</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>profile</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+
+> `inline` 사이즈는 typo 토큰 중 최소 단위(Caption 12px)보다 작은 텍스트가 필요해 예외적으로 `text-[8px]`를 직접 사용합니다.
+
+<Canvas of={AvatarStories.FallbackInitials} />
+<Canvas of={AvatarStories.FallbackIcon} />
+<Canvas of={AvatarStories.ImageLoadError} />
+
+## Props
+
+<Controls />
