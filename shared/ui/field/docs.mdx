@@ -1,0 +1,106 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as FieldStories from './stories';
+
+<Meta of={FieldStories} />
+
+# Field
+
+Label, Input(또는 Textarea/Select 등 임의의 입력 요소), Description/Error 메시지를 세로로 배치하는 레이아웃 wrapper입니다.
+
+내부적으로 상태를 관리하거나 Context로 값을 주입하지 않는 순수 프레젠테이셔널 컴포넌트입니다. `id`/`htmlFor` 연결, `invalid` 상태 전달은 모두 사용하는 쪽에서 직접 처리합니다.
+
+## 기본 사용
+
+<Canvas of={FieldStories.Default} />
+
+```tsx
+<Field>
+  <Label htmlFor="username">아이디</Label>
+  <Input id="username" placeholder="예: pickplace_user" />
+</Field>
+```
+
+## Description
+
+입력 요소에 대한 부가 설명이 필요할 때 `FieldDescription`을 사용합니다.
+
+<Canvas of={FieldStories.WithDescription} />
+
+## Error
+
+에러 메시지가 있을 때는 `FieldError`를 사용합니다. `children`이 없으면 아무것도 렌더링하지 않으므로, 에러 유무에 따라 조건부로 렌더링해도 되고 항상 렌더링해도 됩니다.
+
+<Canvas of={FieldStories.WithError} />
+
+```tsx
+<Field>
+  <Label htmlFor="password">비밀번호</Label>
+  <Input id="password" type="password" status="error" />
+  <FieldError>비밀번호는 8자 이상이어야 해요.</FieldError>
+</Field>
+```
+
+## Description ↔ Error 전환
+
+같은 자리에 상황에 따라 `FieldDescription` 또는 `FieldError` 중 하나만 보여주는 패턴입니다. 어떤 걸 보여줄지는 호출부가 직접 결정합니다.
+
+<Canvas of={FieldStories.DescriptionThenErrorOnSubmit} />
+
+```tsx
+{
+  hasError ? (
+    <FieldError>닉네임은 2자 이상이어야 해요.</FieldError>
+  ) : (
+    <FieldDescription>다른 유저에게 보여지는 이름이에요.</FieldDescription>
+  );
+}
+```
+
+## 접근성 관련 주의사항
+
+`Input`은 `status="error"`일 때 `aria-invalid`를 자동으로 설정합니다. 다만 `Field`는 `id`/`htmlFor`/`aria-describedby`를 자동으로 연결하지 않으므로, `Label`의 `htmlFor`와 입력 요소의 `id`는 반드시 동일한 값으로 직접 지정해야 하며, 에러/설명 텍스트를 스크린리더 상에서 연결하고 싶다면 `aria-describedby`도 직접 지정해야 합니다.
+
+## Props
+
+<Controls of={FieldStories.Default} />
+
+<table>
+  <thead>
+    <tr>
+      <th>컴포넌트</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>Field</code>
+      </td>
+      <td>
+        레이아웃 wrapper. <code>div</code>의 모든 props를 그대로 받습니다.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>FieldDescription</code>
+      </td>
+      <td>
+        부가 설명 텍스트. <code>p</code>의 모든 props를 그대로 받습니다.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>FieldError</code>
+      </td>
+      <td>
+        <code>role="alert"</code>이 적용된 에러 텍스트. <code>children</code>이 없으면 렌더링하지
+        않습니다.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## 관련 컴포넌트
+
+- `Label`은 별도 래퍼 없이 `shared/ui/label`의 `Label`을 그대로 사용합니다.
+- `Input`은 `status="error"`일 때 시각적 스타일과 `aria-invalid`를 함께 처리하므로, `Field`나 호출부에서 별도로 `invalid` 상태를 전달할 필요가 없습니다.
