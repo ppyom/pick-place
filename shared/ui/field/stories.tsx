@@ -10,7 +10,7 @@ import { FieldError } from './field-error';
 const meta = {
   title: 'UI/Field',
   component: Field,
-  tags: [],
+  tags: ['!dev'],
   parameters: {
     layout: 'centered',
   },
