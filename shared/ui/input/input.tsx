@@ -16,6 +16,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
         {leftIcon && <Icon className={inputIconVariants({ status })} name={leftIcon} size="sm" />}
         <input
           ref={ref}
+          aria-invalid={status === 'error' || undefined}
           className={cn(inputVariants({ status, hasLeftIcon: !!leftIcon }), className)}
           {...props}
         />
