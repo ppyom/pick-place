@@ -7,7 +7,7 @@ import { AppBar } from './app-bar';
 const meta = {
   title: 'UI/AppBar',
   component: AppBar,
-  tags: [],
+  tags: ['!dev'],
   args: {
     children: null,
   },
