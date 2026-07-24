@@ -5,7 +5,7 @@ import { OAuthButton } from './oauth-button';
 const meta = {
   title: 'Features/OauthLogin',
   component: OAuthButton,
-  tags: [],
+  tags: ['!dev'],
   args: {
     onClick: () => {},
   },
