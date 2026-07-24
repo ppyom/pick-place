@@ -1,0 +1,149 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+
+import * as AppBarStories from './stories';
+
+<Meta of={AppBarStories} />
+
+# AppBar
+
+화면 상단에 고정되는 AppBar 컴포넌트입니다. `AppBar.Back`, `AppBar.Title`, `AppBar.RightAction`, `AppBar.Search` 서브 컴포넌트를 조합해서 사용하는 compound 패턴으로 구성되어 있습니다.
+
+<Canvas of={AppBarStories.TitleOnly} />
+
+## 서브 컴포넌트
+
+<table>
+  <thead>
+    <tr>
+      <th>서브 컴포넌트</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>AppBar.Back</code>
+      </td>
+      <td>
+        뒤로가기 버튼입니다. 아이콘은 <code>prev</code>로 고정되어 있으며, <code>onClick</code>{' '}
+        콜백으로 동작을 주입받습니다.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>AppBar.Title</code>
+      </td>
+      <td>
+        중앙에 위치하는 타이틀 텍스트입니다. 좌우 슬롯 너비와 무관하게 항상 정중앙에 고정됩니다.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>AppBar.RightAction</code>
+      </td>
+      <td>
+        우측 액션 버튼입니다. <code>icon</code>, <code>onClick</code>, <code>label</code>(접근성용
+        aria-label)을 props로 받습니다.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>AppBar.Search</code>
+      </td>
+      <td>
+        검색 입력 등 남는 공간을 채우는 콘텐츠 슬롯입니다. 이 슬롯이 포함되면 AppBar는 타이틀 중앙
+        정렬 레이아웃 대신 좌측 정렬 레이아웃으로 전환됩니다.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## 사용 예시
+
+### 타이틀만
+
+<Canvas of={AppBarStories.TitleOnly} />
+
+```tsx
+<AppBar>
+  <AppBar.Title>탐색</AppBar.Title>
+</AppBar>
+```
+
+### 뒤로가기 + 타이틀
+
+<Canvas of={AppBarStories.BackWithTitle} />
+
+```tsx
+<AppBar>
+  <AppBar.Back onClick={onBack} />
+  <AppBar.Title>설정</AppBar.Title>
+</AppBar>
+```
+
+### 타이틀 + 우측 액션
+
+<Canvas of={AppBarStories.TitleWithRightAction} />
+
+```tsx
+<AppBar>
+  <AppBar.Title>My</AppBar.Title>
+  <AppBar.RightAction icon="settings" onClick={onSettings} label="설정" />
+</AppBar>
+```
+
+### 검색만
+
+<Canvas of={AppBarStories.SearchOnly} />
+
+```tsx
+<AppBar>
+  <AppBar.Search>
+    <Input placeholder="장소, 지역, 태그 검색" />
+  </AppBar.Search>
+</AppBar>
+```
+
+### 뒤로가기 + 검색
+
+<Canvas of={AppBarStories.BackWithSearch} />
+
+```tsx
+<AppBar>
+  <AppBar.Back onClick={onBack} />
+  <AppBar.Search>
+    <Input placeholder="장소, 지역, 태그 검색" />
+  </AppBar.Search>
+</AppBar>
+```
+
+## 레이아웃
+
+`container-app` 유틸리티를 사용해 최대 480px 폭으로 화면 상단에 고정(`fixed`)됩니다. `BottomNavigation`과 동일한 위치 전략입니다.
+
+## Design Tokens
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Surface/Elevated</td>
+      <td>배경색</td>
+    </tr>
+    <tr>
+      <td>Text/Primary</td>
+      <td>타이틀 및 아이콘 색상</td>
+    </tr>
+    <tr>
+      <td>Border/Default</td>
+      <td>하단 경계선</td>
+    </tr>
+  </tbody>
+</table>
+
+> AppBar 전용 Component 토큰은 별도로 정의하지 않았습니다. Semantic 토큰을 직접 참조합니다.
