@@ -1,4 +1,4 @@
-import { Meta, Story, Controls, Canvas } from '@storybook/addon-docs/blocks';
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
 
 import * as ProfileFormStories from './stories';
 
@@ -6,7 +6,7 @@ import * as ProfileFormStories from './stories';
 
 # ProfileForm
 
-Avatar와 입력 필드를 조합한 프로필 편집 폼입니다. 닉네임과 소개를 입력받아 저장하며, React Hook Form과 Zod를 사용해 검증합니다.
+ImageUploader와 입력 필드를 조합한 프로필 편집 폼입니다. 닉네임과 소개를 입력받아 저장하며, React Hook Form과 Zod를 사용해 검증합니다.
 
 ## 기본 사용
 
@@ -29,6 +29,12 @@ Avatar와 입력 필드를 조합한 프로필 편집 폼입니다. 닉네임과
 유효한 값을 입력하고 저장하면 `onSubmit`이 폼 값과 함께 호출됩니다.
 
 <Canvas of={ProfileFormStories.SubmitSuccess} />
+
+## 아바타 변경
+
+아바타 영역을 클릭해 이미지 파일을 선택하면 `onAvatarChange`가 선택된 `File`과 함께 호출됩니다. 실제 업로드/저장 로직은 호출부에서 처리합니다.
+
+<Canvas of={ProfileFormStories.AvatarChanged} />
 
 ## 취소
 
@@ -79,10 +85,10 @@ Avatar와 입력 필드를 조합한 프로필 편집 폼입니다. 닉네임과
         <code>onAvatarChange</code>
       </td>
       <td>
-        <code>() =&gt; void</code>
+        <code>(file: File) =&gt; void</code>
       </td>
       <td>-</td>
-      <td>사진 변경 버튼 클릭 시 호출됩니다. (추후 ImageUploader로 교체 예정)</td>
+      <td>아바타 이미지 선택 시 선택된 파일과 함께 호출됩니다.</td>
     </tr>
     <tr>
       <td>
@@ -112,4 +118,4 @@ Avatar와 입력 필드를 조합한 프로필 편집 폼입니다. 닉네임과
 - 검증 규칙은 `model/schema.ts`의 `profileFormSchema`(Zod)에 정의되어 있습니다.
 - 닉네임: 2~20자 필수
 - 소개: 최대 100자, 선택
-- 사진 변경 영역은 현재 임시 버튼이며, `ImageUploader`(shared/ui) 구현 완료 후 교체될 예정입니다.
+- 사진 변경 영역은 `ImageUploader`(shared/ui)를 사용하며, 크롭/리사이즈는 지원하지 않습니다.

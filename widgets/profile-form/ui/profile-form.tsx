@@ -3,18 +3,19 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { Avatar } from '@/shared/ui/avatar';
 import { Button } from '@/shared/ui/button';
 import { Field, FieldError } from '@/shared/ui/field';
+import { ImageUploader } from '@/shared/ui/image-uploader';
 import { Input } from '@/shared/ui/input';
 import { Label } from '@/shared/ui/label';
+import { noop } from '@/shared/utils/noop';
 
 import { profileFormSchema, type ProfileFormValues } from '../model/schema';
 
 interface Props {
   defaultValues?: Partial<ProfileFormValues>;
   avatarSrc?: string;
-  onAvatarChange?: () => void;
+  onAvatarChange?: (file: File) => void;
   onSubmit: (values: ProfileFormValues) => void;
   onCancel?: () => void;
 }
@@ -42,10 +43,12 @@ export function ProfileForm({
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
       <div className="flex flex-col items-center gap-3">
-        <Avatar src={avatarSrc} size="profile" alt="프로필 이미지" />
-        <button type="button" onClick={onAvatarChange} className="text-label-m text-text-brand">
-          사진 변경
-        </button>
+        <ImageUploader
+          value={avatarSrc}
+          onChange={onAvatarChange ?? noop}
+          shape="circle"
+          size="lg"
+        />
       </div>
 
       <Field>
