@@ -61,6 +61,19 @@ export const SubmitSuccess: Story = {
   },
 };
 
+export const AvatarChanged: Story = {
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const trigger = canvas.getByLabelText('이미지 선택');
+    const input = trigger.querySelector('input') as HTMLInputElement;
+
+    const file = new File(['dummy'], 'avatar.png', { type: 'image/png' });
+    await userEvent.upload(input, file);
+
+    await expect(args.onAvatarChange).toHaveBeenCalledWith(file);
+  },
+};
+
 export const CancelClicked: Story = {
   play: async ({ canvasElement, args }) => {
     const canvas = within(canvasElement);
