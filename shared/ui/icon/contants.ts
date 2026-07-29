@@ -1,6 +1,7 @@
 import {
   BookmarkIcon,
   BusIcon,
+  CameraIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
   CoffeeIcon,
@@ -44,6 +45,7 @@ export const ICONS = {
   memo: MessageSquareTextIcon,
   heart: HeartIcon,
   loading: Loader2Icon,
+  camera: CameraIcon,
 
   // Bottom Navigation
   home: HomeIcon,
