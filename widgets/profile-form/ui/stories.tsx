@@ -6,7 +6,7 @@ import { ProfileForm } from './profile-form';
 const meta = {
   title: 'Widgets/ProfileForm',
   component: ProfileForm,
-  tags: [],
+  tags: ['!dev'],
   parameters: {
     layout: 'padded',
   },
