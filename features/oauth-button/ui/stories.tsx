@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { OAuthButton } from './oauth-button';
 
 const meta = {
-  title: 'Features/OauthLogin',
+  title: 'Features/OAuthButton',
   component: OAuthButton,
   tags: ['!dev'],
   args: {
