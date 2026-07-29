@@ -6,7 +6,7 @@ import { ImageUploader } from './image-uploader';
 const meta: Meta<typeof ImageUploader> = {
   title: 'UI/ImageUploader',
   component: ImageUploader,
-  tags: [],
+  tags: ['!dev'],
   parameters: {
     layout: 'centered',
   },
