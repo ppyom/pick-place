@@ -5,7 +5,7 @@ import { Tag } from './tag';
 const meta = {
   title: 'UI/Tag',
   component: Tag,
-  tags: [],
+  tags: ['!dev'],
   args: {
     children: '성수',
   },
