@@ -1,0 +1,28 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as TagStories from './stories';
+
+<Meta of={TagStories} />
+
+# Tag
+
+Pick 상세/카드에서 해시태그(#성수, #데이트 등)를 표시하는 표시 전용 컴포넌트입니다.
+
+Chip과 달리 선택 상태(Selected/Disabled)를 가지지 않으며, 클릭 등의 상호작용도 없습니다.
+
+## 사용 예시
+
+<Canvas of={TagStories.Default} />
+
+## Props
+
+<Controls />
+
+## 여러 개 나열하기
+
+Tag 자체는 줄바꿈을 처리하지 않습니다. 여러 개를 나열할 때는 부모 컨테이너에 스타일을 직접 적용해 주세요.
+
+<Canvas of={TagStories.MultipleWithWrap} />
+
+## Component Token
+
+Tag는 재사용성이 낮고 Semantic으로 승격할 만큼 범용적이지 않다고 판단하여 별도의 Component Token을 생성하지 않고, Semantic 토큰(`Text/Brand`)을 직접 참조합니다.
