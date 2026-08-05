@@ -13,6 +13,7 @@ const IMAGES = [
 const meta: Meta<typeof CollageThumbnail> = {
   title: 'UI/CollageThumbnail',
   component: CollageThumbnail,
+  tags: ['!dev'],
   args: {
     alt: '장소 콜라주',
     className: 'size-40',

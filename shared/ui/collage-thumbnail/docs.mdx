@@ -1,0 +1,108 @@
+import { Meta, Controls, Primary } from '@storybook/addon-docs/blocks';
+
+import * as CollageThumbnailStories from './stories';
+
+<Meta of={CollageThumbnailStories} />
+
+# CollageThumbnail
+
+이미지 배열을 받아 개수에 따라 2x2 그리드로 배치하는 콜라주 썸네일 컴포넌트입니다. 셀 렌더링은 `Thumbnail`에 위임하고, 개수별 그리드 배치와 `+N` 오버레이만 담당합니다.
+
+<Primary />
+
+## 레이아웃 규칙
+
+<table>
+  <thead>
+    <tr>
+      <th>이미지 개수</th>
+      <th>배치</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1장</td>
+      <td>전체 칸을 채웁니다.</td>
+    </tr>
+    <tr>
+      <td>2장</td>
+      <td>좌우로 세로 분할합니다.</td>
+    </tr>
+    <tr>
+      <td>3장</td>
+      <td>왼쪽은 세로 전체, 오른쪽은 위아래 2칸으로 분할합니다.</td>
+    </tr>
+    <tr>
+      <td>4장</td>
+      <td>2x2로 균등 분할합니다.</td>
+    </tr>
+    <tr>
+      <td>5장 이상</td>
+      <td>
+        2x2 중 마지막 칸에 <code>+N</code> 오버레이를 표시합니다 (N = 전체 개수 - 4).
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Props
+
+<Controls />
+
+<table>
+  <thead>
+    <tr>
+      <th>Prop</th>
+      <th>Type</th>
+      <th>기본값</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>images</code>
+      </td>
+      <td>
+        <code>string[]</code>
+      </td>
+      <td>-</td>
+      <td>이미지 URL 배열입니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>alt</code>
+      </td>
+      <td>
+        <code>string</code>
+      </td>
+      <td>
+        <code>''</code>
+      </td>
+      <td>
+        이미지 대체 텍스트입니다. 각 셀에는 <code>{'{alt} {index}'}</code> 형태로 적용됩니다.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>className</code>
+      </td>
+      <td>
+        <code>string</code>
+      </td>
+      <td>-</td>
+      <td>컨테이너 크기, 라운드 등 오버라이드할 클래스입니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+## 사용 예시
+
+```tsx
+<CollageThumbnail images={pick.imageUrls} alt={pick.title} className="size-40" />
+```
+
+## 참고사항
+
+- 4장을 초과하는 이미지는 렌더링되지 않고, 마지막 칸의 오버레이로만 개수가 표시됩니다.
+- 각 셀은 `Thumbnail`을 재사용하되 `rounded-none`으로 오버라이드하여 각지게 표시하고, 바깥 컨테이너의 `overflow-hidden`으로 전체 라운드 모양을 유지합니다.
