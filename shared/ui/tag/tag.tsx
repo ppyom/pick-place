@@ -9,7 +9,7 @@ export function Tag({ children, className }: Props) {
   return (
     <span
       className={cn(
-        'text-label-m text-brand bg-surface-brand-subtle rounded-full px-2 py-1',
+        'typo-caption text-text-primary bg-surface-brand-subtle rounded-full px-2 py-1',
         className,
       )}
     >
