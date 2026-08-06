@@ -3,7 +3,7 @@ import type { Place } from '@/entities/place';
 export interface PickAuthor {
   id: string;
   name: string;
-  avatarUrl: string;
+  avatarUrl?: string;
 }
 
 export interface PickPlaceItem {
@@ -19,5 +19,6 @@ export interface Pick {
   author: PickAuthor;
   places: PickPlaceItem[];
   bookmarkCount: number;
+  isBookmarked?: boolean;
   createdAt: string;
 }
