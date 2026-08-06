@@ -6,6 +6,7 @@ import { BookmarkToggleButton } from './bookmark-toggle-button';
 const meta = {
   title: 'Features/ToggleBookmark',
   component: BookmarkToggleButton,
+  tags: ['!dev'],
   parameters: {
     layout: 'centered',
   },
