@@ -5,6 +5,7 @@ import { BookmarkCount } from './bookmark-count';
 const meta = {
   title: 'Entities/Pick/BookmarkCount',
   component: BookmarkCount,
+  tags: ['!dev'],
   parameters: {
     layout: 'centered',
   },
