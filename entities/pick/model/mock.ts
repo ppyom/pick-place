@@ -36,4 +36,38 @@ export const mockPicks: Pick[] = [
     isBookmarked: true,
     createdAt: '2026-07-28T13:30:00.000Z',
   },
+  {
+    id: 'pick-3',
+    title: '서울에서 꼭 가봐야 할 감성 넘치는 소규모 로컬 카페와 베이커리 모음집',
+    tags: ['맛집', '서울'],
+    author: {
+      id: 'user-3',
+      name: '아주살짝긴닉네임123',
+      avatarUrl: 'https://i.pravatar.cc/150?img=33',
+    },
+    places: [
+      { place: mockPlaces[0] },
+      { place: mockPlaces[1] },
+      { place: mockPlaces[2], memo: '빵이 유명한데 오후엔 품절 잦음' },
+      { place: mockPlaces[0] },
+      { place: mockPlaces[1] },
+    ],
+    bookmarkCount: 9999,
+    isBookmarked: false,
+    createdAt: '2026-07-28T13:30:00.000Z',
+  },
+  {
+    id: 'pick-4',
+    title: '한강 뷰 좋은 카페',
+    tags: ['카페', '한강'],
+    author: {
+      id: 'user-2',
+      name: 'hana',
+      avatarUrl: 'https://i.pravatar.cc/150?img=2',
+    },
+    places: [{ place: mockPlaces[1] }],
+    bookmarkCount: 345,
+    isBookmarked: false,
+    createdAt: '2026-07-28T13:30:00.000Z',
+  },
 ];
