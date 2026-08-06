@@ -10,6 +10,7 @@ const mockPick: Pick = mockPicks[0];
 const meta = {
   title: 'Widgets/PickGridCard',
   component: PickGridCard,
+  tags: ['!dev'],
   parameters: {
     layout: 'centered',
   },
