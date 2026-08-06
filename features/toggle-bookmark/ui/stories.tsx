@@ -46,6 +46,40 @@ export const ZeroCount: Story = {
   },
 };
 
+export const Filled: Story = {
+  args: {
+    pickId: 'pick-1',
+    initialCount: 128,
+    variant: 'filled',
+  },
+};
+
+export const Outline: Story = {
+  args: {
+    pickId: 'pick-1',
+    initialCount: 128,
+    variant: 'outline',
+  },
+};
+
+export const SizeMedium: Story = {
+  args: {
+    pickId: 'pick-1',
+    initialCount: 128,
+    variant: 'filled',
+    size: 'md',
+  },
+};
+
+export const SizeLarge: Story = {
+  args: {
+    pickId: 'pick-1',
+    initialCount: 128,
+    variant: 'filled',
+    size: 'lg',
+  },
+};
+
 export const ToggleOnClick: Story = {
   args: {
     pickId: 'pick-1',
@@ -64,5 +98,21 @@ export const ToggleOnClick: Story = {
     await userEvent.click(button);
     await expect(button).toHaveAttribute('aria-pressed', 'false');
     await expect(canvas.getByText('128')).toBeInTheDocument();
+  },
+};
+
+export const ToggleOnClickFilled: Story = {
+  args: {
+    pickId: 'pick-1',
+    initialCount: 128,
+    variant: 'filled',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button');
+
+    await userEvent.click(button);
+    await expect(button).toHaveAttribute('aria-pressed', 'true');
+    await expect(canvas.getByText('129')).toBeInTheDocument();
   },
 };
