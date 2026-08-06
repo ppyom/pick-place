@@ -10,6 +10,7 @@ const mockPick: Pick = mockPicks[0];
 const meta = {
   title: 'Widgets/FeedCard',
   component: FeedCard,
+  tags: ['!dev'],
   parameters: {
     layout: 'centered',
   },

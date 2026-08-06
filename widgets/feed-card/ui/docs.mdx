@@ -1,0 +1,62 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+
+import * as FeedCardStories from './stories';
+
+<Meta of={FeedCardStories} />
+
+# FeedCard
+
+홈 피드에서 사용하는 Pick 카드 컴포넌트입니다. 작성자 정보, 대표 장소 이미지와 오버레이 정보, Pick 제목/설명/태그, 북마크 토글과 공유 액션으로 구성됩니다.
+
+## 기본 사용
+
+<Canvas of={FeedCardStories.Default} />
+
+## 북마크된 상태
+
+<Canvas of={FeedCardStories.Bookmarked} />
+
+## 설명 없는 경우
+
+`description`은 optional 필드로, 없으면 해당 영역이 렌더링되지 않습니다.
+
+<Canvas of={FeedCardStories.NoDescription} />
+
+## 장소 메모 없는 경우
+
+대표 장소(`places[0]`)에 `memo`가 없으면 이미지 오버레이에 장소명/주소만 표시됩니다.
+
+<Canvas of={FeedCardStories.NoMemo} />
+
+## 태그 없는 경우
+
+<Canvas of={FeedCardStories.NoTags} />
+
+## 긴 콘텐츠
+
+제목/설명/태그/장소 메모가 모두 긴 경우입니다. 설명은 `line-clamp-2`로 최대 2줄까지 표시됩니다.
+
+<Canvas of={FeedCardStories.LongContent} />
+
+## 북마크 수가 큰 경우
+
+<Canvas of={FeedCardStories.ManyBookmarks} />
+
+## 피드에 여러 개 배치
+
+<Canvas of={FeedCardStories.Feed} />
+
+## Props
+
+<Controls of={FeedCardStories.Default} />
+
+## 관련 컴포넌트
+
+- `entities/pick`의 `BookmarkCount` — 표시 전용 버전
+- `features/toggle-bookmark`의 `BookmarkToggleButton` — 북마크 토글 인터랙션
+- `features/share-pick`의 `ShareButton` — 공유 액션 (Toast 피드백은 별도 이슈 예정)
+- `widgets/pick-grid-card`의 `PickGridCard` — 탐색 그리드용 카드 (같은 Pick 데이터를 다른 레이아웃으로 표시)
+
+## 참고
+
+- `onMoreClick`으로 더보기 클릭 이벤트만 상위로 전달합니다. 실제 메뉴(수정/삭제/신고 등)는 작성자 여부 등 도메인 판단이 필요해 이 컴포넌트 밖(페이지 또는 별도 feature)에서 처리할 예정입니다.
