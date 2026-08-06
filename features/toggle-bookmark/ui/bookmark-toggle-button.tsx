@@ -1,15 +1,17 @@
 import { useState } from 'react';
+import { type VariantProps } from 'class-variance-authority';
 
-import { BookmarkCount } from '@/entities/pick';
+import { BookmarkCount, type bookmarkCountVariants } from '@/entities/pick';
 
 import { cn } from '@/shared/utils/cn';
 
 import { useToggleBookmark } from '../model/use-toggle-bookmark';
 
-interface Props {
+interface Props extends Omit<VariantProps<typeof bookmarkCountVariants>, 'active' | 'size'> {
   pickId: string;
   initialCount: number;
   initialBookmarked?: boolean;
+  size?: 'sm' | 'md' | 'lg';
   className?: string;
 }
 
@@ -17,6 +19,8 @@ export function BookmarkToggleButton({
   pickId,
   initialCount,
   initialBookmarked = false,
+  variant,
+  size = 'sm',
   className,
 }: Props) {
   const [isBookmarked, setIsBookmarked] = useState(initialBookmarked);
@@ -37,7 +41,7 @@ export function BookmarkToggleButton({
       onClick={handleToggle}
       className={cn('cursor-pointer', className)}
     >
-      <BookmarkCount count={count} active={isBookmarked} />
+      <BookmarkCount count={count} active={isBookmarked} variant={variant} size={size} />
     </button>
   );
 }

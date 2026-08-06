@@ -9,6 +9,16 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
+  argTypes: {
+    variant: {
+      control: 'radio',
+      options: ['plane', 'filled', 'outline'],
+    },
+    size: {
+      control: 'radio',
+      options: ['sm', 'md', 'lg'],
+    },
+  },
 } satisfies Meta<typeof BookmarkToggleButton>;
 
 export default meta;
