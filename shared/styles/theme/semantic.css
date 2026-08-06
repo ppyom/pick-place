@@ -6,6 +6,7 @@
   --color-surface-brand: var(--color-primitive-primary-500);
   --color-surface-brand-subtle: var(--color-primitive-primary-100);
   --color-surface-secondary: var(--color-primitive-secondary-200);
+  --color-surface-muted: var(--color-primitive-neutral-100);
   --color-surface-card: var(--color-primitive-white);
   --color-surface-elevated: var(--color-primitive-white);
   --color-surface-disabled: var(--color-primitive-neutral-100);
