@@ -19,5 +19,6 @@ export interface Pick {
   author: PickAuthor;
   places: PickPlaceItem[];
   bookmarkCount: number;
+  isBookmarked?: boolean;
   createdAt: string;
 }
