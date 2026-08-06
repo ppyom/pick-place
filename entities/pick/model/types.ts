@@ -3,7 +3,7 @@ import type { Place } from '@/entities/place';
 export interface PickAuthor {
   id: string;
   name: string;
-  avatarUrl: string;
+  avatarUrl?: string;
 }
 
 export interface PickPlaceItem {
