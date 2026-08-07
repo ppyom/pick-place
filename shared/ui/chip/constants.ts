@@ -4,7 +4,7 @@ const variantStyles = {
   filled:
     'bg-surface-brand text-text-on-brand hover:bg-primitive-primary-600 active:bg-primitive-primary-700',
   outline:
-    'bg-surface-card border border-border-strong text-text-tertiary hover:bg-primitive-neutral-50 active:bg-primitive-neutral-100',
+    'bg-surface-card border-border-strong text-text-tertiary hover:bg-primitive-neutral-50 active:bg-primitive-neutral-100',
   soft: 'bg-surface-brand-subtle text-text-brand',
 };
 
@@ -13,28 +13,31 @@ const sizeStyles = {
   md: 'typo-label-m h-9 px-3 gap-1',
 };
 
-export const chipVariants = cva('flex items-center justify-center rounded-full transition-colors', {
-  variants: {
-    readonly: {
-      false: '',
-      true: variantStyles.soft,
+export const chipVariants = cva(
+  'flex items-center border border-transparent justify-center rounded-full transition-colors',
+  {
+    variants: {
+      readonly: {
+        false: '',
+        true: variantStyles.soft,
+      },
+      selected: {
+        false: '',
+        true: '',
+      },
+      size: sizeStyles,
     },
-    selected: {
-      false: '',
-      true: '',
+    defaultVariants: {
+      readonly: false,
+      selected: false,
+      size: 'md',
     },
-    size: sizeStyles,
+    compoundVariants: [
+      { readonly: false, selected: false, class: variantStyles.outline },
+      { readonly: false, selected: true, class: variantStyles.filled },
+    ],
   },
-  defaultVariants: {
-    readonly: false,
-    selected: false,
-    size: 'md',
-  },
-  compoundVariants: [
-    { readonly: false, selected: false, class: variantStyles.outline },
-    { readonly: false, selected: true, class: variantStyles.filled },
-  ],
-});
+);
 
 export type ChipVariantProps = VariantProps<typeof chipVariants>;
 
