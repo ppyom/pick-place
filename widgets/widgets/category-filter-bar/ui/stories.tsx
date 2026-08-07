@@ -17,6 +17,7 @@ const categories = [
 const meta: Meta<typeof CategoryFilterBar> = {
   title: 'Widgets/CategoryFilterBar',
   component: CategoryFilterBar,
+  tags: ['!dev'],
   parameters: {
     layout: 'fullscreen',
   },
