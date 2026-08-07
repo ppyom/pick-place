@@ -6,6 +6,7 @@ import { RecentSearchList } from './recent-search-list';
 const meta: Meta<typeof RecentSearchList> = {
   title: 'Widgets/RecentSearchList',
   component: RecentSearchList,
+  tags: ['!dev'],
   parameters: {
     layout: 'padded',
   },

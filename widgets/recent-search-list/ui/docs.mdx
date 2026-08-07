@@ -1,0 +1,118 @@
+import { Canvas, Controls, Meta, Primary, Stories } from '@storybook/addon-docs/blocks';
+
+import * as RecentSearchListStories from './stories';
+
+<Meta of={RecentSearchListStories} />
+
+# RecentSearchList
+
+검색 페이지에서 사용자의 최근 검색어를 보여주는 위젯입니다. 검색어 클릭, 개별 삭제, 전체 삭제 액션을 지원하며, 실제 상태 관리(저장·검색 실행)는 `features/search`의 훅과 조합해서 사용합니다.
+
+<Primary />
+
+## Props
+
+<Controls />
+
+<table>
+  <thead>
+    <tr>
+      <th>Prop</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>items</code>
+      </td>
+      <td>
+        <code>string[]</code>
+      </td>
+      <td>노출할 최근 검색어 목록입니다. 빈 배열이면 안내 문구가 표시됩니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>onItemClick</code>
+      </td>
+      <td>
+        <code>(term: string) =&gt; void</code>
+      </td>
+      <td>검색어 항목 클릭 시 호출됩니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>onItemRemove</code>
+      </td>
+      <td>
+        <code>(term: string) =&gt; void</code>
+      </td>
+      <td>개별 삭제(X) 클릭 시 호출됩니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>onClearAll</code>
+      </td>
+      <td>
+        <code>() =&gt; void</code>
+      </td>
+      <td>전체삭제 클릭 시 호출됩니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>className</code>
+      </td>
+      <td>
+        <code>string</code>
+      </td>
+      <td>루트 요소에 추가할 클래스입니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+## States
+
+<Stories />
+
+## 실제 페이지에서 사용하기
+
+`RecentSearchList`는 UI만 담당하는 위젯입니다. 검색어 저장/삭제 영속화는 `features/search`의 `useRecentSearches`가, 검색 실행 및 라우팅은 `useSearch`가 담당합니다. 검색 페이지에서는 이 둘을 조합해서 사용합니다.
+
+```tsx
+'use client';
+
+import { useRecentSearches } from '@/features/search/model/use-recent-searches';
+import { useSearch } from '@/features/search/model/use-search';
+import { Input } from '@/shared/ui/input';
+import { RecentSearchList } from '@/widgets/recent-search-list/ui/recent-search-list';
+
+export default function SearchPage() {
+  const { query, setQuery, executeSearch } = useSearch();
+  const { terms, addTerm, removeTerm, clearAll } = useRecentSearches();
+
+  const handleSearch = (term: string) => {
+    addTerm(term);
+    executeSearch(term);
+  };
+
+  return (
+    <div>
+      <Input
+        value={query}
+        onChange={(event) => setQuery(event.target.value)}
+        onKeyDown={(event) => event.key === 'Enter' && handleSearch(query)}
+        placeholder="장소, 지역, 태그 검색"
+      />
+      <RecentSearchList
+        items={terms}
+        onItemClick={handleSearch}
+        onItemRemove={removeTerm}
+        onClearAll={clearAll}
+      />
+    </div>
+  );
+}
+```
+
+검색어를 클릭하면 `handleSearch`가 실행되어 최근 검색어 목록에 반영(`addTerm`)되고, 동시에 검색 결과 페이지로 이동(`executeSearch`)합니다. 입력창에서 Enter를 눌러 직접 검색하는 경우에도 동일한 함수를 타므로 로직이 한 곳에서 관리됩니다.
