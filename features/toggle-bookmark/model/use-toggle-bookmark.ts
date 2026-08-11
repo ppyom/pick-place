@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { env } from '@/shared/config/env';
+import { apiClient } from '@/shared/api';
 
 interface ToggleBookmarkParams {
   pickId: string;
@@ -8,15 +8,7 @@ interface ToggleBookmarkParams {
 }
 
 async function toggleBookmark({ pickId, isBookmarked }: ToggleBookmarkParams) {
-  const res = await fetch(`${env.API_URL}/picks/${pickId}/bookmark`, {
-    method: isBookmarked ? 'DELETE' : 'POST',
-  });
-
-  if (!res.ok) {
-    throw new Error('Failed to toggle bookmark');
-  }
-
-  return res.json();
+  return apiClient[isBookmarked ? 'delete' : 'post'](`/picks/${pickId}/bookmark`);
 }
 
 export function useToggleBookmark(pickId: string) {
