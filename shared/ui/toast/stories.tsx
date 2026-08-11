@@ -19,6 +19,7 @@ function ToastDemo() {
 const meta = {
   title: 'UI/Toast',
   component: Toast,
+  tags: ['!dev'],
 } satisfies Meta<typeof Toast>;
 
 export default meta;
