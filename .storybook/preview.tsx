@@ -2,6 +2,7 @@ import type { Preview } from '@storybook/nextjs-vite';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { suite } from '../shared/assets/fonts';
+import { ToastProvider } from '../shared/ui/toast';
 
 import '@/shared/styles/globals.css';
 import './storybook.css';
@@ -42,9 +43,11 @@ const preview: Preview = {
   decorators: [
     (Story) => (
       <QueryClientProvider client={queryClient}>
-        <div className={suite.variable}>
-          <Story />
-        </div>
+        <ToastProvider>
+          <div className={suite.variable}>
+            <Story />
+          </div>
+        </ToastProvider>
       </QueryClientProvider>
     ),
   ],
