@@ -1,0 +1,85 @@
+import { Meta, Controls, Primary } from '@storybook/addon-docs/blocks';
+
+import * as ThumbnailStories from './stories';
+
+<Meta of={ThumbnailStories} />
+
+# Thumbnail
+
+이미지 1장을 표시하는 기본 썸네일 컴포넌트입니다. 정사각 비율, 라운드, `object-cover` 처리를 담당하며, `CollageThumbnail`의 셀 단위로도 재사용됩니다.
+
+<Primary />
+
+## Props
+
+<Controls />
+
+<table>
+  <thead>
+    <tr>
+      <th>Prop</th>
+      <th>Type</th>
+      <th>기본값</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>src</code>
+      </td>
+      <td>
+        <code>string</code>
+      </td>
+      <td>-</td>
+      <td>이미지 URL입니다. 없으면 배경색만 표시됩니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>alt</code>
+      </td>
+      <td>
+        <code>string</code>
+      </td>
+      <td>
+        <code>''</code>
+      </td>
+      <td>이미지 대체 텍스트입니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>className</code>
+      </td>
+      <td>
+        <code>string</code>
+      </td>
+      <td>-</td>
+      <td>크기, 라운드 등 외부에서 오버라이드할 클래스입니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>sizes</code>
+      </td>
+      <td>
+        <code>string</code>
+      </td>
+      <td>
+        <code>'240px'</code>
+      </td>
+      <td>
+        Next Image의 <code>sizes</code> 속성입니다.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## 사용 예시
+
+```tsx
+<Thumbnail src={place.imageUrl} alt={place.name} className="h-40 w-40" />
+```
+
+## 참고사항
+
+- `src`가 없는 경우 별도의 fallback UI(아이콘 등) 없이 배경색만 표시됩니다. 추후 fallback이 결정되면 이 컴포넌트에 반영합니다.
+- 부모에 `relative`가 필요 없도록 컴포넌트 내부에서 처리되어 있습니다.

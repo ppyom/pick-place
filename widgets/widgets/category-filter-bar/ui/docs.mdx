@@ -1,0 +1,86 @@
+import { Meta, Primary, Controls, Stories } from '@storybook/addon-docs/blocks';
+
+import * as CategoryFilterBarStories from './stories';
+
+<Meta of={CategoryFilterBarStories} />
+
+# CategoryFilterBar
+
+탐색 페이지 상단에서 사용하는 카테고리 필터 바입니다. Chip 목록을 가로 스크롤로 보여주며, 선택된 카테고리를 강조합니다.
+
+## 특징
+
+- 카테고리 목록(`categories`)은 외부에서 props로 주입받습니다. 하드코딩된 카테고리가 없어 재사용 가능합니다.
+- 선택 상태(`selectedId`)는 controlled입니다. 컴포넌트 내부에 상태를 두지 않고, 클릭 시 `onSelect` 콜백만 호출합니다.
+- 가로 스크롤 시 스크롤바는 시각적으로 숨김 처리됩니다.
+
+<Primary />
+
+## Props
+
+<Controls />
+
+<table>
+  <thead>
+    <tr>
+      <th>Prop</th>
+      <th>타입</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>categories</code>
+      </td>
+      <td>
+        <code>{'{ id: string; label: string }[]'}</code>
+      </td>
+      <td>표시할 카테고리 목록입니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>selectedId</code>
+      </td>
+      <td>
+        <code>string</code>
+      </td>
+      <td>현재 선택된 카테고리의 id입니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>onSelect</code>
+      </td>
+      <td>
+        <code>{'(id: string) => void'}</code>
+      </td>
+      <td>카테고리 클릭 시 호출되는 콜백입니다. 선택된 카테고리의 id를 전달받습니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>className</code>
+      </td>
+      <td>
+        <code>string</code>
+      </td>
+      <td>추가 스타일링을 위한 클래스명입니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+## 사용 예시
+
+```tsx
+const [selectedId, setSelectedId] = useState('all');
+
+<CategoryFilterBar
+  categories={[
+    { id: 'all', label: '전체' },
+    { id: 'restaurant', label: '맛집' },
+  ]}
+  selectedId={selectedId}
+  onSelect={setSelectedId}
+/>;
+```
+
+<Stories />

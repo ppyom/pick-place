@@ -1,0 +1,41 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+
+import * as BookmarkToggleButtonStories from './stories';
+
+<Meta of={BookmarkToggleButtonStories} />
+
+# BookmarkToggleButton
+
+Pick의 북마크 상태를 토글하는 인터랙티브 버튼입니다. 표시 전용인 `entities/pick`의 `BookmarkCount`를 감싸서 클릭 시 토글 로직(`useToggleBookmark`)을 연결하고, `variant`/`size`는 그대로 `BookmarkCount`에 위임합니다.
+
+## 기본 사용
+
+<Canvas of={BookmarkToggleButtonStories.Default} />
+
+## 초기 북마크 상태
+
+`initialBookmarked`로 이미 북마크된 상태를 표시할 수 있습니다.
+
+<Canvas of={BookmarkToggleButtonStories.InitiallyBookmarked} />
+
+## Variant
+
+`BookmarkCount`의 variant를 그대로 전달받습니다. 기본값은 `plain`입니다.
+
+<Canvas of={BookmarkToggleButtonStories.Filled} />
+<Canvas of={BookmarkToggleButtonStories.Outline} />
+
+## Size
+
+기본값은 `sm`입니다. PickGridCard처럼 좁은 카드에서는 `sm`, FeedCard나 상세 페이지처럼 넓은 공간에서는 `md`/`lg`를 사용합니다.
+
+<Canvas of={BookmarkToggleButtonStories.SizeMedium} />
+<Canvas of={BookmarkToggleButtonStories.SizeLarge} />
+
+## Props
+
+<Controls of={BookmarkToggleButtonStories.Default} />
+
+## 관련 컴포넌트
+
+- `entities/pick`의 `BookmarkCount` — 표시 전용 버전, 클릭 인터랙션 없이 값만 보여줄 때 사용

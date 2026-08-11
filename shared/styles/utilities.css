@@ -11,3 +11,12 @@
 @utility skeleton {
   animation: pulse 1.5s infinite;
 }
+
+/**
+ * 앱 전체 레이아웃 최대 폭 컨테이너
+ */
+@utility container-app {
+  width: 100%;
+  max-width: 480px;
+  margin-inline: auto;
+}

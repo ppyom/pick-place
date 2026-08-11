@@ -1,0 +1,68 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import * as OnboardingStories from './stories';
+
+<Meta of={OnboardingStories} />
+
+# Onboarding
+
+관심사 → 동행인 → 관심 지역, 3단계로 선호도를 수집하는 온보딩 위젯입니다. 스텝 정의(config)를 데이터로 두고 컨테이너가 순회하며 렌더하는 **config-driven** 구조입니다.
+
+<Canvas of={OnboardingStories.Default} />
+
+## 구조
+
+<table>
+  <thead>
+    <tr>
+      <th>세그먼트</th>
+      <th>역할</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`ui/onboarding.tsx`</td>
+      <td>컨테이너. 스텝 순회, 진행 인디케이터, 이전/다음, Motion 전환</td>
+    </tr>
+    <tr>
+      <td>`ui/onboarding-step.tsx`</td>
+      <td>단일 스텝 렌더러. config를 받아 title + chip grid 출력 (상태 없음)</td>
+    </tr>
+    <tr>
+      <td>`ui/onboarding-chip.tsx`</td>
+      <td>온보딩 전용 chip. selected 토글 (multi-select)</td>
+    </tr>
+    <tr>
+      <td>`model/use-onboarding.ts`</td>
+      <td>스텝 인덱스 + 스텝별 선택값 상태</td>
+    </tr>
+    <tr>
+      <td>`config/steps.tsx`</td>
+      <td>스텝 정의</td>
+    </tr>
+  </tbody>
+</table>
+
+## 동작
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>선택 방식</td>
+      <td>전 스텝 multi-select. 선택 0개 허용(스킵 가능)이라 다음/시작하기 항상 활성</td>
+    </tr>
+    <tr>
+      <td>완료</td>
+      <td>마지막 스텝에서 `onComplete(selection)` 호출. 저장/라우팅은 위젯 밖 책임</td>
+    </tr>
+    <tr>
+      <td>스텝 전환</td>
+      <td>Motion `AnimatePresence`로 슬라이드. `key`는 스텝 id</td>
+    </tr>
+  </tbody>
+</table>
