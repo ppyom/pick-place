@@ -1,4 +1,5 @@
 import { env } from '@/shared/config/env';
+import { useToast } from '@/shared/ui/toast';
 
 interface SharePickParams {
   pickId: string;
@@ -6,6 +7,8 @@ interface SharePickParams {
 }
 
 export function useSharePick() {
+  const { showToast } = useToast();
+
   async function share({ pickId, title }: SharePickParams) {
     const url = `${env.SITE_URL}/picks/${pickId}`;
 
@@ -18,8 +21,12 @@ export function useSharePick() {
       return;
     }
 
-    await navigator.clipboard.writeText(url);
-    // TODO: Toast로 "링크가 복사되었습니다" 표시 (Toast 컴포넌트 나오면 연결)
+    try {
+      await navigator.clipboard.writeText(url);
+      showToast('링크가 복사되었습니다');
+    } catch {
+      showToast('링크 복사에 실패했어요');
+    }
   }
 
   return { share };
