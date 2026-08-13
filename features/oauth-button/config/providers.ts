@@ -1,9 +1,11 @@
+import { OAuthProvider } from '@/entities/session';
+
 import { AppleLogo } from '../ui/icons/apple-logo';
 import { GoogleLogo } from '../ui/icons/google-logo';
 import { KakaoLogo } from '../ui/icons/kakao-logo';
 import { NaverLogo } from '../ui/icons/naver-logo';
 
-export type OAuthProvider = 'kakao' | 'naver' | 'google' | 'apple';
+export type { OAuthProvider };
 
 type ProviderConfig = {
   label: string;
