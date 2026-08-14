@@ -36,9 +36,9 @@ export function Onboarding({ onComplete, className }: Props) {
   };
 
   return (
-    <div className={cn('container-app flex min-h-dvh flex-col px-4 pt-6 pb-8', className)}>
+    <div className={cn('container-app flex h-dvh flex-col px-4', className)}>
       <div
-        className="flex items-center gap-2"
+        className="flex flex-none items-center gap-2 pt-6"
         role="progressbar"
         aria-valuemin={1}
         aria-valuemax={steps.length}
@@ -56,7 +56,7 @@ export function Onboarding({ onComplete, className }: Props) {
         ))}
       </div>
 
-      <div className="relative flex-1 pt-10">
+      <div className="relative flex-1 overflow-x-hidden overflow-y-auto pt-4">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentStep.id}
@@ -74,8 +74,8 @@ export function Onboarding({ onComplete, className }: Props) {
         </AnimatePresence>
       </div>
 
-      <div className="flex flex-col gap-2">
-        <div className="flex gap-2 pt-6">
+      <div className="flex flex-none flex-col gap-2 py-4">
+        <div className="flex gap-2">
           {!isFirst && (
             <Button variant="secondary" onClick={goPrev} className="flex-1">
               이전
