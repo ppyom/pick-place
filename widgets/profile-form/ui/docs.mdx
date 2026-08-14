@@ -48,6 +48,12 @@ ImageUploader와 입력 필드를 조합한 프로필 편집 폼입니다. 닉�
 
 <Canvas of={ProfileFormStories.WithoutCancelButton} />
 
+## 저장 중
+
+`isSubmitting`이 `true`면 저장 버튼에 로딩 스피너가 표시되고, 모든 입력/버튼이 비활성화됩니다.
+
+<Canvas of={ProfileFormStories.Submitting} />
+
 ## Props
 
 <table>
@@ -109,6 +115,21 @@ ImageUploader와 입력 필드를 조합한 프로필 편집 폼입니다. 닉�
       </td>
       <td>-</td>
       <td>전달하지 않으면 취소 버튼이 렌더링되지 않습니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>isSubmitting</code>
+      </td>
+      <td>
+        <code>boolean</code>
+      </td>
+      <td>
+        <code>false</code>
+      </td>
+      <td>
+        저장 요청 진행 중 여부입니다. true면 입력/버튼이 비활성화되고 저장 버튼에 로딩 표시가
+        나타납니다.
+      </td>
     </tr>
   </tbody>
 </table>

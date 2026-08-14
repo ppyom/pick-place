@@ -18,6 +18,7 @@ interface Props {
   onAvatarChange?: (file: File) => void;
   onSubmit: (values: ProfileFormValues) => void;
   onCancel?: () => void;
+  isSubmitting?: boolean;
 }
 
 export function ProfileForm({
@@ -26,6 +27,7 @@ export function ProfileForm({
   onAvatarChange,
   onSubmit,
   onCancel,
+  isSubmitting = false,
 }: Props) {
   const {
     register,
@@ -48,6 +50,7 @@ export function ProfileForm({
           onChange={onAvatarChange ?? noop}
           shape="circle"
           size="lg"
+          disabled={isSubmitting}
         />
       </div>
 
@@ -57,6 +60,7 @@ export function ProfileForm({
           id="nickname"
           placeholder="닉네임을 입력해주세요"
           status={errors.nickname ? 'error' : 'default'}
+          disabled={isSubmitting}
           {...register('nickname')}
         />
         {errors.nickname?.message && <FieldError>{errors.nickname?.message}</FieldError>}
@@ -67,6 +71,7 @@ export function ProfileForm({
           id="bio"
           placeholder="자기소개를 입력해주세요"
           status={errors.bio ? 'error' : 'default'}
+          disabled={isSubmitting}
           {...register('bio')}
         />
         {errors.bio?.message && <FieldError>{errors.bio?.message}</FieldError>}
@@ -74,11 +79,17 @@ export function ProfileForm({
 
       <div className="mt-2 flex gap-3">
         {onCancel && (
-          <Button className="flex-1" type="button" variant="outline" onClick={onCancel}>
+          <Button
+            className="flex-1"
+            type="button"
+            variant="outline"
+            onClick={onCancel}
+            disabled={isSubmitting}
+          >
             취소
           </Button>
         )}
-        <Button className="flex-1" type="submit">
+        <Button className="flex-1" type="submit" isLoading={isSubmitting}>
           저장
         </Button>
       </div>
