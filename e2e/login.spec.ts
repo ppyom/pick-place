@@ -27,9 +27,9 @@ test.describe('로그인 페이지', () => {
     await page.waitForURL('/');
   });
 
-  // NOTE(#54 후속): /profile-setup, /onboarding 라우트가 생기면
-  // 최초 유저 로그인 → 프로필 설정 → 온보딩 완료 → /explore 도착까지 이어지는
-  // 전체 스모크 시나리오로 확장한다. 지금은 리다이렉트 목적지만 확인한다.
+  // NOTE(#54 후속): /profile-setup 라우트가 생기면
+  // 최초 유저 로그인 → 프로필 설정 → 온보딩 완료 → / 도착까지 이어지는
+  // 전체 스모크 시나리오로 확장한다. 온보딩 단독 스모크는 e2e/onboarding.spec.ts에서 커버 중.
   test('최초 유저는 로그인 후 프로필 설정 페이지로 이동한다', async ({ page }) => {
     await page.goto('/login');
 

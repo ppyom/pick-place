@@ -13,11 +13,11 @@ interface Props {
 export function OnboardingStep({ step, selected, onToggle, className }: Props) {
   return (
     <section
-      className={cn('flex flex-col gap-6', className)}
+      className={cn('flex flex-col gap-4', className)}
       aria-labelledby={`onboarding-step-${step.id}`}
     >
       <header className="flex flex-col gap-2">
-        <h2 id={`onboarding-step-${step.id}`} className="typo-heading-m text-text-primary">
+        <h2 id={`onboarding-step-${step.id}`} className="typo-title-l text-text-primary">
           {step.title}
         </h2>
         {step.description && <p className="typo-body-m text-text-secondary">{step.description}</p>}
