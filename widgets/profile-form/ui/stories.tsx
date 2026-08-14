@@ -96,3 +96,17 @@ export const WithoutCancelButton: Story = {
     await expect(canvas.getByRole('button', { name: '저장' })).toBeInTheDocument();
   },
 };
+
+export const Submitting: Story = {
+  args: {
+    isSubmitting: true,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const submitButton = canvas.getByRole('button', { name: '저장' });
+    const cancelButton = canvas.getByRole('button', { name: '취소' });
+
+    await expect(submitButton).toBeDisabled();
+    await expect(cancelButton).toBeDisabled();
+  },
+};
