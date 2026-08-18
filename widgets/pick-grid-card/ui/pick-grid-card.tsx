@@ -8,10 +8,11 @@ import { cn } from '@/shared/utils/cn';
 
 interface Props {
   pick: Pick;
+  showAuthor?: boolean;
   className?: string;
 }
 
-export function PickGridCard({ pick, className }: Props) {
+export function PickGridCard({ pick, showAuthor = true, className }: Props) {
   return (
     <div className={cn('bg-surface-card flex w-full flex-col', className)}>
       <CollageThumbnail
@@ -20,13 +21,15 @@ export function PickGridCard({ pick, className }: Props) {
       />
       <div className="flex flex-1 flex-col justify-between gap-2 p-4 pt-2.5">
         <p className="typo-body-m text-text-primary line-clamp-2">{pick.title}</p>
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Avatar size="inline" src={pick.author.avatarUrl} alt={pick.author.name} />
-            <span className="typo-label-m text-text-secondary line-clamp-1">
-              {pick.author.name}
-            </span>
-          </div>
+        <div className={cn('flex items-center', showAuthor ? 'justify-between' : 'justify-end')}>
+          {showAuthor && (
+            <div className="flex items-center gap-2">
+              <Avatar size="inline" src={pick.author.avatarUrl} alt={pick.author.name} />
+              <span className="typo-label-m text-text-secondary line-clamp-1">
+                {pick.author.name}
+              </span>
+            </div>
+          )}
           <BookmarkToggleButton
             pickId={pick.id}
             initialCount={pick.bookmarkCount}
