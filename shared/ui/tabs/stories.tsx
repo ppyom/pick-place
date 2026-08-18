@@ -7,6 +7,7 @@ import { Tabs } from './tabs';
 const meta = {
   title: 'UI/Tabs',
   component: Tabs,
+  tags: ['!dev'],
   parameters: {
     layout: 'centered',
   },
