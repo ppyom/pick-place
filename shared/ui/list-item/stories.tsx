@@ -6,6 +6,7 @@ import { ListItem } from './list-item';
 const meta = {
   title: 'UI/ListItem',
   component: ListItem,
+  tags: ['!dev'],
   parameters: {
     layout: 'padded',
   },

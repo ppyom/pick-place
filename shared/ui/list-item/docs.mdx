@@ -1,0 +1,88 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+
+import * as ListItemStories from './stories';
+
+<Meta of={ListItemStories} />
+
+# ListItem
+
+설정 화면 등에서 세로로 나열되는 리스트 행 컴포넌트입니다. `href` / `onClick` / (둘 다 없는) 정적 상태에 따라
+Link, button, div 중 하나로 렌더링됩니다.
+
+`NavItem`과 달리 활성(active) 상태를 갖지 않는 1회성 클릭 행이며, 하단 네비게이션이 아닌 리스트형 화면(설정 등)에서 사용합니다.
+
+<Canvas of={ListItemStories.Link} />
+
+## 상태별 사용
+
+### Link (href)
+
+우측에 chevron 아이콘이 표시됩니다.
+
+<Canvas of={ListItemStories.Link} />
+
+### Clickable (onClick)
+
+`onClick`만 지정하면 button으로 렌더링되며, 마찬가지로 chevron이 표시됩니다.
+
+<Canvas of={ListItemStories.Clickable} />
+
+### Disabled
+
+`disabled`는 `onClick`과 함께 사용할 때만 의미가 있습니다. native `disabled` 대신
+`aria-disabled` + `onClick` 차단 패턴을 사용합니다.
+
+<Canvas of={ListItemStories.Disabled} />
+
+### Danger
+
+회원 탈퇴처럼 위험한 동작에는 `variant="danger"`를 사용합니다.
+
+<Canvas of={ListItemStories.Danger} />
+
+### Static (value)
+
+`href`/`onClick`이 모두 없으면 상호작용 없는 행으로 렌더링됩니다. 이때는 chevron 대신 `value`로 전달한
+텍스트가 우측에 표시됩니다. (예: 앱 버전)
+
+<Canvas of={ListItemStories.Static} />
+
+## Props
+
+<Controls />
+
+## 사용 시 주의
+
+- `href`와 `onClick`을 동시에 전달하면 `href`가 우선합니다. 둘 다 필요한 경우는 없어야 합니다.
+- 여러 개를 나열할 때 각 행 사이의 구분선(`Divider`)은 이 컴포넌트가 그리지 않습니다. 상위에서 조합해주세요.
+
+## Design Tokens
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Text/Primary</td>
+      <td>기본 label 색상</td>
+    </tr>
+    <tr>
+      <td>Status/Error/Text</td>
+      <td>`danger` variant label 색상</td>
+    </tr>
+    <tr>
+      <td>Text/Tertiary</td>
+      <td>chevron 아이콘, `value` 텍스트 색상</td>
+    </tr>
+    <tr>
+      <td>Text/Disabled</td>
+      <td>`disabled` 상태 label 색상</td>
+    </tr>
+  </tbody>
+</table>
+
+> ListItem 전용 Component 토큰은 별도로 정의하지 않았습니다. Semantic 토큰을 직접 참조합니다.
