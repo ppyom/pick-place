@@ -96,15 +96,17 @@ export function MyContent() {
       </div>
 
       <div className="container-app pointer-events-none fixed inset-x-0 bottom-20 z-10 flex justify-end px-6">
-        <Button
-          variant="primary"
-          size="icon"
-          aria-label="Pick 만들기"
-          onClick={() => router.push('/collections/new')}
-          className="pointer-events-auto rounded-full shadow-lg"
-        >
-          <Icon name="plus" size="md" />
-        </Button>
+        {tab === 'mine' && (
+          <Button
+            variant="primary"
+            size="icon"
+            aria-label="Pick 만들기"
+            onClick={() => router.push('/collections/new')}
+            className="pointer-events-auto rounded-full shadow-lg"
+          >
+            <Icon name="plus" size="md" />
+          </Button>
+        )}
       </div>
       <BottomNavigation />
     </div>
