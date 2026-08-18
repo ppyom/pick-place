@@ -1,0 +1,97 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+
+import * as ToastStories from './stories';
+
+<Meta of={ToastStories} />
+
+# Toast
+
+전역에서 짧은 피드백 메시지를 보여주는 컴포넌트입니다. 클립보드 복사 완료, 저장 완료 등 사용자 행동에 대한 즉각적인 피드백을 전달할 때 사용합니다.
+
+## 사용 예시
+
+`ToastProvider`를 트리 상단(예: `layout.tsx`)에 마운트한 뒤, `useToast` 훅으로 어디서든 호출할 수 있습니다.
+
+```tsx
+import { useToast } from '@/shared/ui/toast';
+
+function ShareButton() {
+  const { showToast } = useToast();
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(url);
+    showToast('링크가 복사되었습니다');
+  };
+
+  return <button onClick={handleCopy}>공유하기</button>;
+}
+```
+
+## Props
+
+<table>
+  <thead>
+    <tr>
+      <th>Prop</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>message</code>
+      </td>
+      <td>
+        <code>string</code>
+      </td>
+      <td>표시할 메시지 텍스트입니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+## Default
+
+<Canvas of={ToastStories.Default} />
+
+## LongMessage
+
+메시지가 길어질 경우의 레이아웃을 확인할 수 있습니다.
+
+<Canvas of={ToastStories.LongMessage} />
+
+## TriggerFromButton
+
+버튼 클릭 시 `useToast`를 통해 실제로 토스트가 나타나는 흐름을 확인할 수 있습니다.
+
+<Canvas of={ToastStories.TriggerFromButton} />
+
+## useToast
+
+<table>
+  <thead>
+    <tr>
+      <th>반환값</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>showToast</code>
+      </td>
+      <td>
+        <code>(message: string, duration?: number) =&gt; void</code>
+      </td>
+      <td>
+        토스트를 표시합니다. <code>duration</code>은 기본 2000ms이며, 이후 자동으로 사라집니다.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## 참고
+
+- `ToastProvider` 없이 `useToast`를 호출하면 에러를 던집니다. 반드시 `ToastProvider` 하위 트리에서 사용해야 합니다.
+- 여러 토스트를 동시에 호출하면 큐로 쌓여 순서대로 표시됩니다. "한 번에 하나만" 표시하고 싶다면 `showToast` 내부 로직 수정이 필요합니다.

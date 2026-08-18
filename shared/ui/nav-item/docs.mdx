@@ -1,0 +1,36 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as NavItemStories from './stories';
+
+<Meta of={NavItemStories} />
+
+# NavItem
+
+아이콘 + 라벨 + active 상태만 다루는 순수 네비게이션 아이템입니다.
+라우트 목록이나 현재 경로 판단 로직은 모르며, `active`/`href`를 외부에서 주입받습니다.
+
+<Canvas of={NavItemStories.Active} />
+
+<Controls />
+
+## Token
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BottomNavigation/Item-Active</td>
+      <td>Text/Brand</td>
+    </tr>
+    <tr>
+      <td>BottomNavigation/Item-Inactive</td>
+      <td>Text/Disabled</td>
+    </tr>
+  </tbody>
+</table>
+
+<Canvas of={NavItemStories.Inactive} />

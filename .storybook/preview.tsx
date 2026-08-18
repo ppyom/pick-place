@@ -1,9 +1,18 @@
 import type { Preview } from '@storybook/nextjs-vite';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { suite } from '../shared/assets/fonts';
+import { ToastProvider } from '../shared/ui/toast';
 
 import '@/shared/styles/globals.css';
 import './storybook.css';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: { retry: false },
+    mutations: { retry: false },
+  },
+});
 
 const preview: Preview = {
   parameters: {
@@ -25,13 +34,21 @@ const preview: Preview = {
       // 'off' - skip a11y checks entirely
       test: 'todo',
     },
+
+    nextjs: {
+      appDirectory: true,
+    },
   },
 
   decorators: [
     (Story) => (
-      <div className={suite.variable}>
-        <Story />
-      </div>
+      <QueryClientProvider client={queryClient}>
+        <ToastProvider>
+          <div className={suite.variable}>
+            <Story />
+          </div>
+        </ToastProvider>
+      </QueryClientProvider>
     ),
   ],
 };

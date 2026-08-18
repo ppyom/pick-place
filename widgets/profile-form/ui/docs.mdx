@@ -1,0 +1,142 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+
+import * as ProfileFormStories from './stories';
+
+<Meta of={ProfileFormStories} />
+
+# ProfileForm
+
+ImageUploader와 입력 필드를 조합한 프로필 편집 폼입니다. 닉네임과 소개를 입력받아 저장하며, React Hook Form과 Zod를 사용해 검증합니다.
+
+## 기본 사용
+
+<Canvas of={ProfileFormStories.Default} />
+
+## 기본값 있는 경우
+
+기존 프로필 정보를 불러와 초기값으로 채워야 할 때 `defaultValues`와 `avatarSrc`를 전달합니다.
+
+<Canvas of={ProfileFormStories.WithDefaultValues} />
+
+## 검증 실패
+
+닉네임을 입력하지 않고 저장을 시도하면 에러 메시지가 노출되며 `onSubmit`은 호출되지 않습니다.
+
+<Canvas of={ProfileFormStories.ValidationError} />
+
+## 제출 성공
+
+유효한 값을 입력하고 저장하면 `onSubmit`이 폼 값과 함께 호출됩니다.
+
+<Canvas of={ProfileFormStories.SubmitSuccess} />
+
+## 아바타 변경
+
+아바타 영역을 클릭해 이미지 파일을 선택하면 `onAvatarChange`가 선택된 `File`과 함께 호출됩니다. 실제 업로드/저장 로직은 호출부에서 처리합니다.
+
+<Canvas of={ProfileFormStories.AvatarChanged} />
+
+## 취소
+
+취소 버튼을 누르면 `onCancel`이 호출됩니다.
+
+<Canvas of={ProfileFormStories.CancelClicked} />
+
+## 취소 버튼 없는 경우
+
+`onCancel`을 전달하지 않으면 취소 버튼이 렌더링되지 않고 저장 버튼만 표시됩니다. 취소가 필요 없는 화면(예: 최초 온보딩 프로필 설정)에서 사용합니다.
+
+<Canvas of={ProfileFormStories.WithoutCancelButton} />
+
+## 저장 중
+
+`isSubmitting`이 `true`면 저장 버튼에 로딩 스피너가 표시되고, 모든 입력/버튼이 비활성화됩니다.
+
+<Canvas of={ProfileFormStories.Submitting} />
+
+## Props
+
+<table>
+  <thead>
+    <tr>
+      <th>Prop</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>defaultValues</code>
+      </td>
+      <td>
+        <code>Partial&lt;ProfileFormValues&gt;</code>
+      </td>
+      <td>-</td>
+      <td>닉네임/소개 초기값입니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>avatarSrc</code>
+      </td>
+      <td>
+        <code>string</code>
+      </td>
+      <td>-</td>
+      <td>현재 아바타 이미지 URL입니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>onAvatarChange</code>
+      </td>
+      <td>
+        <code>(file: File) =&gt; void</code>
+      </td>
+      <td>-</td>
+      <td>아바타 이미지 선택 시 선택된 파일과 함께 호출됩니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>onSubmit</code>
+      </td>
+      <td>
+        <code>(values: ProfileFormValues) =&gt; void</code>
+      </td>
+      <td>필수</td>
+      <td>검증 통과 후 저장 시 호출됩니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>onCancel</code>
+      </td>
+      <td>
+        <code>() =&gt; void</code>
+      </td>
+      <td>-</td>
+      <td>전달하지 않으면 취소 버튼이 렌더링되지 않습니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>isSubmitting</code>
+      </td>
+      <td>
+        <code>boolean</code>
+      </td>
+      <td>
+        <code>false</code>
+      </td>
+      <td>
+        저장 요청 진행 중 여부입니다. true면 입력/버튼이 비활성화되고 저장 버튼에 로딩 표시가
+        나타납니다.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## 참고
+
+- 검증 규칙은 `model/schema.ts`의 `profileFormSchema`(Zod)에 정의되어 있습니다.
+- 닉네임: 2~20자 필수
+- 소개: 최대 100자, 선택
+- 사진 변경 영역은 `ImageUploader`(shared/ui)를 사용하며, 크롭/리사이즈는 지원하지 않습니다.

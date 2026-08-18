@@ -1,0 +1,71 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+
+import * as OAuthButtonStories from './stories';
+
+<Meta of={OAuthButtonStories} />
+
+# OAuthButton
+
+소셜 로그인 버튼 컴포넌트입니다. Provider(카카오/네이버/구글/애플)별 브랜드 스타일을 지원합니다.
+
+## 사용 예시
+
+<Canvas of={OAuthButtonStories.Kakao} />
+
+## Props
+
+<Controls />
+
+## Provider별 스타일
+
+<table>
+  <thead>
+    <tr>
+      <th>Provider</th>
+      <th>Background</th>
+      <th>Text Color</th>
+      <th>Border</th>
+      <th>Icon Offset</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Kakao</td>
+      <td>#fee500</td>
+      <td>#000000</td>
+      <td>-</td>
+      <td>16px</td>
+    </tr>
+    <tr>
+      <td>Naver</td>
+      <td>#03a94d</td>
+      <td>#ffffff</td>
+      <td>-</td>
+      <td>16px</td>
+    </tr>
+    <tr>
+      <td>Google</td>
+      <td>#ffffff</td>
+      <td>#1f1f1f</td>
+      <td>#747775</td>
+      <td>16px</td>
+    </tr>
+    <tr>
+      <td>Apple</td>
+      <td>#000000</td>
+      <td>#ffffff</td>
+      <td>-</td>
+      <td>13px</td>
+    </tr>
+  </tbody>
+</table>
+
+## 디자인 토큰 예외 사유
+
+Provider별 배경색, 텍스트 색상, 아이콘 오프셋은 각 브랜드사의 고유 가이드라인을 따르는 고정 값입니다. Semantic 토큰으로 승격하기에는 재사용성이 낮아 Primitive/Semantic 토큰을 참조하지 않고 직접 값을 사용합니다.
+
+아이콘 오프셋(`iconOffset`) 값은 각 로고 원본의 내부 여백 차이를 보정하기 위한 것으로, 스페이싱 토큰이 아닌 개별 조정 값입니다.
+
+## 접근성
+
+버튼이 비활성 상태일 때 네이티브 `disabled` 속성 대신 `aria-disabled`와 `onClick` 차단 방식을 사용합니다.
