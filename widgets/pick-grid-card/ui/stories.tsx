@@ -68,6 +68,14 @@ export const NoAvatar: Story = {
   },
 };
 
+export const HiddenAuthor: Story = {
+  name: 'Show Author: false (마이페이지)',
+  args: {
+    pick: mockPick,
+    showAuthor: false,
+  },
+};
+
 export const Grid: Story = {
   args: {
     pick: mockPick,

@@ -34,6 +34,13 @@ import * as PickGridCardStories from './stories';
 
 <Canvas of={PickGridCardStories.NoAvatar} />
 
+## 작성자 정보 숨김 (`showAuthor={false}`)
+
+마이페이지처럼 본인이 만든 Pick만 나열하는 화면에서는 작성자(나 자신) 아바타/닉네임이 불필요합니다.
+`showAuthor`를 `false`로 주면 해당 영역이 빠지고 북마크 정보가 우측에 정렬됩니다.
+
+<Canvas of={PickGridCardStories.HiddenAuthor} />
+
 ## 그리드에 여러 개 배치
 
 실제 탐색 페이지처럼 여러 카드가 그리드로 배치됐을 때, 제목 줄 수가 다른 카드들 사이에서도 하단 정보가 정렬되는지 확인할 수 있습니다.

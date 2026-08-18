@@ -1,0 +1,56 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as TabsStories from './stories';
+
+<Meta of={TabsStories} />
+
+# Tabs
+
+`items` 배열을 받아 렌더링하는 config-driven 탭 컴포넌트입니다. 내부 상태를 갖지 않는 완전 제어(controlled)
+컴포넌트로, 현재 선택된 값(`value`)과 변경 핸들러(`onChange`)를 상위에서 관리합니다.
+
+<Canvas of={TabsStories.Default} />
+
+<Controls />
+
+## Props
+
+<table>
+  <thead>
+  <tr>
+    <th>Prop</th>
+    <th>타입</th>
+    <th>설명</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>`items`</td>
+    <td>`{ value: string, label: string }[]`</td>
+    <td>탭 목록</td>
+  </tr>
+  <tr>
+    <td>`value`</td>
+    <td>`string`</td>
+    <td>현재 선택된 탭의 `value`</td>
+  </tr>
+  <tr>
+    <td>`onChange`</td>
+    <td>`(value: string) => void`</td>
+    <td>탭 클릭 시 호출되는 핸들러</td>
+  </tr>
+  <tr>
+    <td>`className`</td>
+    <td>`string`</td>
+    <td>추가 클래스</td>
+  </tr>
+  </tbody>
+</table>
+
+## 스타일
+
+선택된 탭은 `Text/Brand` 색상 텍스트에 `Border/Brand` 밑줄이 표시되고, 나머지 탭은 `Text/Tertiary` 색상으로
+표시됩니다. 탭 바 전체 하단에는 `Border/Default` 구분선이 깔립니다.
+
+## 인터랙션
+
+<Canvas of={TabsStories.SwitchOnClick} />
