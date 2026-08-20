@@ -16,7 +16,7 @@
     @apply font-sans;
 
     color: var(--color-text-primary);
-    background-color: var(--color-surface-background);
+    background-color: var(--color-primitive-primary-900);
   }
 
   * {
