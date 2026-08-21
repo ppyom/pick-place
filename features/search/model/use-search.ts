@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-export function useSearch() {
+export function useSearch(initialQuery = '') {
   const router = useRouter();
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(initialQuery);
 
   const executeSearch = (term: string) => {
     const trimmed = term.trim();
