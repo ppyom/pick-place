@@ -46,4 +46,10 @@ describe('useSearch', () => {
     expect(result.current.query).toBe('');
     expect(pushMock).not.toHaveBeenCalled();
   });
+
+  it('초기 검색어를 전달하면 query 상태로 반영된다', () => {
+    const { result } = renderHook(() => useSearch('성수'));
+
+    expect(result.current.query).toBe('성수');
+  });
 });
