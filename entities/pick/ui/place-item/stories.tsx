@@ -9,6 +9,7 @@ const mockPlace = mockPlaces[0];
 const meta = {
   title: 'Entities/Pick/PlaceItem',
   component: PlaceItem,
+  tags: ['!dev'],
   parameters: {
     layout: 'centered',
   },

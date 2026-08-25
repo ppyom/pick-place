@@ -1,0 +1,51 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+
+import * as PlaceItemStories from './stories';
+
+<Meta of={PlaceItemStories} />
+
+# PlaceItem
+
+Pick에 담긴 장소 1건(썸네일 + 이름 + 주소 + 메모)을 보여주는 row 컴포넌트입니다. `PickPlaceItem`(`place` + `memo`)을 기반으로 하며, 기본적으로 read-only이지만 `onRemove`를 통해 편집 가능한 형태로도 재사용할 수 있습니다.
+
+## 기본 사용
+
+<Canvas of={PlaceItemStories.Default} />
+
+## 메모 없음
+
+`memo`는 optional이며, 없으면 표시되지 않습니다.
+
+<Canvas of={PlaceItemStories.NoMemo} />
+
+## 주소 없음
+
+`place.address`가 없는 경우에도 표시되지 않습니다.
+
+<Canvas of={PlaceItemStories.NoAddress} />
+
+## 긴 내용
+
+이름/주소는 `truncate`, 메모는 `line-clamp-2`로 잘립니다.
+
+<Canvas of={PlaceItemStories.LongContent} />
+
+## 이동 가능
+
+`href`를 전달하면 `Link`로 렌더링되고, 우측에 `>` 아이콘이 표시됩니다.
+
+<Canvas of={PlaceItemStories.Navigable} />
+
+## 삭제 가능
+
+`onRemove`를 전달하면 우측에 `>` 아이콘 대신 삭제 버튼이 표시됩니다. Pick 작성 페이지처럼 편집 가능한 목록에서 사용합니다. `href`와 `onRemove`가 함께 전달되면 `onRemove`가 우선합니다.
+
+<Canvas of={PlaceItemStories.Removable} />
+
+## 목록에서 사용
+
+<Canvas of={PlaceItemStories.List} />
+
+## Props
+
+<Controls of={PlaceItemStories.Default} />
