@@ -6,6 +6,7 @@ export type { Pick, PickAuthor, PickPlaceItem } from './model/types';
 export { useExplorePicks } from './model/use-explore-picks';
 export { useFeed } from './model/use-feed';
 export { useMyPicks } from './model/use-my-picks';
+export { usePick } from './model/use-pick';
 export { useSavedPicks } from './model/use-saved-picks';
 export { useSearchResults } from './model/use-search-results';
 export { BookmarkCount } from './ui/bookmark-count/bookmark-count';
