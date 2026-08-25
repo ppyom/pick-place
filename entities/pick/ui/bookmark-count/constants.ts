@@ -1,11 +1,11 @@
 import { cva } from 'class-variance-authority';
 
-export const bookmarkCountVariants = cva('flex items-center', {
+export const bookmarkCountVariants = cva('flex items-center justify-center', {
   variants: {
     variant: {
       plain: 'text-text-tertiary',
       filled: 'rounded-full bg-surface-muted text-text-secondary',
-      outline: 'rounded-full border border-border-strong text-text-tertiary',
+      outline: 'rounded-full bg-surface-card border border-border-strong text-text-tertiary',
     },
     size: {
       sm: 'gap-1 typo-caption',
