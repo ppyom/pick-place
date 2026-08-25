@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { ShareButton } from '@/features/share-pick';
 import { BookmarkToggleButton } from '@/features/toggle-bookmark';
 
@@ -58,7 +60,9 @@ export function FeedCard({ pick, onMoreClick, className }: Props) {
       )}
 
       <div className="flex flex-col gap-1 px-4">
-        <p className="typo-title-m text-text-primary">{pick.title}</p>
+        <Link href={`/picks/${pick.id}`} className="typo-title-m text-text-primary">
+          {pick.title}
+        </Link>
         {pick.description && (
           <p className="typo-body-m text-text-secondary line-clamp-2">{pick.description}</p>
         )}

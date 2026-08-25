@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { BookmarkToggleButton } from '@/features/toggle-bookmark';
 
 import { type Pick } from '@/entities/pick';
@@ -20,7 +22,9 @@ export function PickGridCard({ pick, showAuthor = true, className }: Props) {
         className="rounded-radius-m"
       />
       <div className="flex flex-1 flex-col justify-between gap-2 p-4 pt-2.5">
-        <p className="typo-body-m text-text-primary line-clamp-2">{pick.title}</p>
+        <Link href={`/picks/${pick.id}`} className="typo-body-m text-text-primary line-clamp-2">
+          {pick.title}
+        </Link>
         <div className={cn('flex items-center', showAuthor ? 'justify-between' : 'justify-end')}>
           {showAuthor && (
             <div className="flex items-center gap-2">
