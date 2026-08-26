@@ -1,23 +1,22 @@
+import { useShare } from '@/shared/hooks/use-share';
 import { Icon, type IconSize } from '@/shared/ui/icon';
 import { cn } from '@/shared/utils/cn';
 
-import { useSharePick } from '../model/use-share-pick';
-
 interface Props {
-  pickId: string;
+  path: string;
   title: string;
   className?: string;
   size?: IconSize;
 }
 
-export function ShareButton({ pickId, title, className, size = 'sm' }: Props) {
-  const { share } = useSharePick();
+export function ShareButton({ path, title, className, size = 'sm' }: Props) {
+  const { share } = useShare();
 
   return (
     <button
       type="button"
       aria-label="공유"
-      onClick={() => share({ pickId, title })}
+      onClick={() => share({ path, title })}
       className={cn('cursor-pointer', className)}
     >
       <Icon name="share" size={size} className="text-text-tertiary" />

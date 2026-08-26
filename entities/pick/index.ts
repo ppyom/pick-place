@@ -1,5 +1,6 @@
 export type { FeedPage } from './api/get-feed';
 export { MOCK_CURRENT_USER_ID } from './api/get-my-picks';
+export { getPicksByPlace } from './api/get-picks-by-place';
 export type { PickCategory } from './config/categories';
 export { DEFAULT_PICK_CATEGORY_ID, PICK_CATEGORIES } from './config/categories';
 export type { Pick, PickAuthor, PickPlaceItem } from './model/types';
@@ -7,8 +8,7 @@ export { useExplorePicks } from './model/use-explore-picks';
 export { useFeed } from './model/use-feed';
 export { useMyPicks } from './model/use-my-picks';
 export { usePick } from './model/use-pick';
+export { usePicksByPlace } from './model/use-picks-by-place';
 export { useSavedPicks } from './model/use-saved-picks';
 export { useSearchResults } from './model/use-search-results';
-export { BookmarkCount } from './ui/bookmark-count/bookmark-count';
-export { bookmarkCountVariants } from './ui/bookmark-count/constants';
 export { PlaceItem } from './ui/place-item/place-item';

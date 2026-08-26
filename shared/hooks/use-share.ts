@@ -1,16 +1,16 @@
 import { env } from '@/shared/config/env';
 import { useToast } from '@/shared/ui/toast';
 
-interface SharePickParams {
-  pickId: string;
+interface ShareParams {
+  path: string;
   title: string;
 }
 
-export function useSharePick() {
+export function useShare() {
   const { showToast } = useToast();
 
-  async function share({ pickId, title }: SharePickParams) {
-    const url = `${env.SITE_URL}/picks/${pickId}`;
+  async function share({ path, title }: ShareParams) {
+    const url = `${env.SITE_URL}${path}`;
 
     if (navigator.share) {
       try {
