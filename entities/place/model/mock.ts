@@ -7,6 +7,7 @@ export const mockPlaces: Place[] = [
     category: '카페',
     address: '서울 성동구 연무장길',
     thumbnail: 'https://picsum.photos/seed/1/400',
+    bookmarkCount: 1234,
   },
   {
     id: 'place-2',
@@ -14,6 +15,7 @@ export const mockPlaces: Place[] = [
     category: '카페',
     address: '서울 성동구 아차산로',
     thumbnail: 'https://picsum.photos/seed/2/400',
+    bookmarkCount: 856,
   },
   {
     id: 'place-3',
@@ -21,5 +23,6 @@ export const mockPlaces: Place[] = [
     category: '베이커리',
     address: '서울 성동구 연무장길',
     thumbnail: 'https://picsum.photos/seed/3/400',
+    bookmarkCount: 302,
   },
 ];

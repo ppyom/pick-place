@@ -4,4 +4,5 @@ export interface Place {
   category?: string;
   address?: string;
   thumbnail: string;
+  bookmarkCount: number;
 }
