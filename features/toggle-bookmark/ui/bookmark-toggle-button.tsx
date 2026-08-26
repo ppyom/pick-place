@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { type VariantProps } from 'class-variance-authority';
 
-import { BookmarkCount, type bookmarkCountVariants } from '@/entities/pick';
-
+import { BookmarkCount, type bookmarkCountVariants } from '@/shared/ui/bookmark-count';
 import { cn } from '@/shared/utils/cn';
 
 import { useToggleBookmark } from '../model/use-toggle-bookmark';
