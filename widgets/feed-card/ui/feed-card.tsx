@@ -1,12 +1,12 @@
 import Link from 'next/link';
 
-import { ShareButton } from '@/features/share-pick';
 import { BookmarkToggleButton } from '@/features/toggle-bookmark';
 
 import { type Pick } from '@/entities/pick';
 
 import { Avatar } from '@/shared/ui/avatar';
 import { Icon } from '@/shared/ui/icon';
+import { ShareButton } from '@/shared/ui/share-button';
 import { Tag } from '@/shared/ui/tag';
 import { cn } from '@/shared/utils/cn';
 
@@ -84,7 +84,7 @@ export function FeedCard({ pick, onMoreClick, className }: Props) {
           variant="outline"
         />
 
-        <ShareButton pickId={pick.id} title={pick.title} />
+        <ShareButton path={`/picks/${pick.id}`} title={pick.title} />
       </div>
     </div>
   );

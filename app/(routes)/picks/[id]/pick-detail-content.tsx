@@ -2,7 +2,6 @@
 
 import { useRouter } from 'next/navigation';
 
-import { ShareButton } from '@/features/share-pick';
 import { BookmarkToggleButton } from '@/features/toggle-bookmark';
 
 import { PlaceItem, usePick } from '@/entities/pick';
@@ -12,6 +11,7 @@ import { AppBar } from '@/shared/ui/app-bar';
 import { Avatar } from '@/shared/ui/avatar';
 import { Button } from '@/shared/ui/button';
 import { CollageThumbnail } from '@/shared/ui/collage-thumbnail';
+import { ShareButton } from '@/shared/ui/share-button';
 import { Tag } from '@/shared/ui/tag';
 
 interface Props {
@@ -106,7 +106,7 @@ export function PickDetailContent({ id }: Props) {
               variant="outline"
               size="md"
             />
-            <ShareButton pickId={pick.id} title={pick.title} size="md" />
+            <ShareButton path={`/picks/${pick.id}`} title={pick.title} />
           </div>
         </div>
 
