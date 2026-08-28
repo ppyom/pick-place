@@ -1,0 +1,85 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as BottomSheetStories from './stories';
+
+<Meta of={BottomSheetStories} />
+
+# BottomSheet
+
+화면 하단에서 올라오는 시트를 여닫는 도메인 지식 없는 범용 슬롯 컴포넌트입니다.
+
+열림/닫힘 상태는 `isOpen` / `onClose`로 외부에서 제어하며(Controlled), `AppBar`와 동일하게
+`BottomSheet.Title` / `BottomSheet.Body` / `BottomSheet.Footer`를 children으로 조합해서 사용합니다.
+
+`document.body`에 `createPortal`로 렌더링되어 페이지의 `overflow`/`z-index` 컨텍스트에
+영향받지 않습니다.
+
+<Canvas of={BottomSheetStories.WithTitleAndFooter} />
+
+## Props
+
+<Controls />
+
+## 슬롯 구성
+
+<table>
+  <thead>
+    <tr>
+      <th>슬롯</th>
+      <th>필수 여부</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`BottomSheet.Title`</td>
+      <td>선택</td>
+      <td>제목 영역입니다. 있을 때만 헤더(제목 + 닫기 버튼)가 렌더링됩니다.</td>
+    </tr>
+    <tr>
+      <td>`BottomSheet.Body`</td>
+      <td>필수</td>
+      <td>스크롤 가능한 본문 영역입니다.</td>
+    </tr>
+    <tr>
+      <td>`BottomSheet.Footer`</td>
+      <td>선택</td>
+      <td>CTA 버튼 등 하단 고정 영역입니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+## 슬롯별 className
+
+`Title` / `Body` / `Footer` 각 슬롯 컴포넌트가 자체 `className`을 받아 스타일을 직접
+오버라이드합니다. `cn`으로 기본 스타일과 병합됩니다.
+
+```tsx
+<BottomSheet.Body className="gap-3 py-2">...</BottomSheet.Body>
+```
+
+루트 `BottomSheet`는 패널 전체(`className`)와 오버레이(`overlayClassName`)만 조정합니다.
+
+## Title 없이 사용하기
+
+`BottomSheet.Title`을 생략하면 헤더 자체가 렌더링되지 않아 닫기 버튼도 함께 사라집니다.
+이 경우 오버레이 클릭이나 Escape 키로만 닫을 수 있으므로, 별도의 닫기 수단이 Body 안에
+있는지 확인해주세요.
+
+<Canvas of={BottomSheetStories.BodyOnly} />
+
+## 닫기 동작
+
+다음 세 가지 방법으로 닫을 수 있으며, 모두 `onClose`를 호출합니다.
+
+- 오버레이(배경) 클릭
+- 헤더의 닫기 버튼 (Title이 있을 때만)
+- Escape 키
+
+열려있는 동안 배경 스크롤은 자동으로 잠깁니다.
+
+## Component Token
+
+BottomSheet는 재사용성이 낮고 Semantic으로 승격할 만큼 범용적이지 않다고 판단하여 별도의
+Component Token을 생성하지 않고, Semantic 토큰(`Surface/Elevated`, `Surface/Overlay`)을
+직접 참조합니다. 모서리 반경은 `Radius/XL`(`rounded-t-xl`), 그림자는 `Elevation/M`에 대응하는
+`shadow-md`를 사용합니다.

@@ -9,6 +9,7 @@ import { BottomSheet } from './bottom-sheet';
 const meta = {
   title: 'UI/BottomSheet',
   component: BottomSheet,
+  tags: ['!dev'],
   args: {
     isOpen: false,
     onClose: () => {},
