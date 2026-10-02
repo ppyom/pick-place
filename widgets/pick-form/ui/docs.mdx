@@ -1,0 +1,73 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as TagInputStories from './stories';
+
+<Meta of={TagInputStories} />
+
+# TagInput
+
+Pick 작성 페이지에서 태그를 입력하는 위젯 내부 컴포넌트입니다. 입력 → "추가" 버튼 클릭으로
+태그가 하나씩 확정되고, 확정된 태그는 `shared/ui/tag`의 삭제 가능한 형태(`onRemove`)로
+렌더링됩니다.
+
+값은 항상 외부에서 제어합니다(Controlled) — `value: string[]` / `onChange: (tags: string[]) => void`.
+이 컴포넌트는 폼 전용 내부 로직이라 공용 컴포넌트로 분리하지 않고 `widgets/pick-form` 안에
+둡니다.
+
+<Canvas of={TagInputStories.Controlled} />
+
+## Props
+
+<Controls />
+
+## `#` prefix
+
+입력창에는 `#` 없이 입력합니다. 추가 시 선두에 `#`이 붙어 있어도 트리밍해서 저장하므로
+`#성수`를 입력하든 `성수`를 입력하든 동일하게 처리됩니다. 화면에 `#`이 보이는 건 `Tag`
+컴포넌트가 렌더링할 때 붙이는 것뿐이고, 실제 값(`value`)에는 `#`이 포함되지 않습니다.
+
+## 태그 확정
+
+Enter가 아니라 "추가" 버튼을 명시적으로 눌러야 태그가 확정됩니다. 모바일 환경에서 한글 등
+조합 입력(IME) 중 Enter로 인한 오동작을 피하기 위한 선택입니다.
+
+<Canvas of={TagInputStories.AddOnClick} />
+
+## 중복 방지
+
+완전히 동일한 문자열(공백 제거, `#` 제거 후 기준)만 중복으로 판단합니다. 대소문자나 일부
+유사한 표기는 구분합니다.
+
+<Canvas of={TagInputStories.PreventsDuplicate} />
+
+## 삭제
+
+태그의 X 버튼을 누르면 바로 제거됩니다.
+
+<Canvas of={TagInputStories.RemoveTag} />
+
+## 최대 개수
+
+최대 5개(`MAX_TAGS`)까지만 추가할 수 있습니다. 가득 차면 입력창과 추가 버튼이 모두
+비활성화되고, placeholder로 안내 문구가 표시됩니다.
+
+<Canvas of={TagInputStories.Full} />
+
+## Usage
+
+```tsx
+const [tags, setTags] = useState<string[]>([]);
+
+<TagInput value={tags} onChange={setTags} />;
+```
+
+### React Hook Form 연동
+
+```tsx
+const { control } = useForm<PickFormValues>();
+
+<Controller
+  name="tags"
+  control={control}
+  render={({ field }) => <TagInput value={field.value} onChange={field.onChange} />}
+/>;
+```

@@ -8,7 +8,7 @@ import { TagInput } from './tag-input';
 const meta = {
   title: 'Widgets/TagInput',
   component: TagInput,
-  tags: [],
+  tags: ['!dev'],
   decorators: [
     (Story) => (
       <div style={{ width: 375 }}>
