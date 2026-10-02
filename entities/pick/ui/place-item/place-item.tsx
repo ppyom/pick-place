@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { Place } from '@/entities/place';
 
 import { Icon } from '@/shared/ui/icon';
+import { Input } from '@/shared/ui/input';
 import { Thumbnail } from '@/shared/ui/thumbnail';
 import { cn } from '@/shared/utils/cn';
 
@@ -11,10 +12,13 @@ interface Props {
   memo?: string;
   href?: string;
   onRemove?: () => void;
+  onMemoChange?: (memo: string) => void;
   className?: string;
 }
 
-export function PlaceItem({ place, memo, href, onRemove, className }: Props) {
+export function PlaceItem({ place, memo, href, onRemove, onMemoChange, className }: Props) {
+  const editable = !!onMemoChange;
+
   const body = (
     <>
       <Thumbnail src={place.thumbnail} alt={place.name} className="size-16 shrink-0" />
@@ -23,11 +27,22 @@ export function PlaceItem({ place, memo, href, onRemove, className }: Props) {
         {place.address && (
           <span className="typo-body-s text-text-tertiary truncate">{place.address}</span>
         )}
-        {memo && (
-          <p className="typo-body-s text-text-secondary line-clamp-2 flex items-start gap-1">
-            <Icon name="memo" size="sm" className="text-text-tertiary mt-0.5 shrink-0" />
-            <span>{memo}</span>
-          </p>
+        {editable ? (
+          <Input
+            className="typo-body-s"
+            leftIcon="memo"
+            value={memo ?? ''}
+            placeholder="메모를 남겨보세요"
+            onChange={(event) => onMemoChange(event.target.value)}
+            onClick={(event) => event.stopPropagation()}
+          />
+        ) : (
+          memo && (
+            <p className="typo-body-s text-text-secondary line-clamp-2 flex items-start gap-1">
+              <Icon name="memo" size="sm" className="text-text-tertiary mt-0.5 shrink-0" />
+              <span>{memo}</span>
+            </p>
+          )
         )}
       </div>
       {onRemove ? (
@@ -44,12 +59,12 @@ export function PlaceItem({ place, memo, href, onRemove, className }: Props) {
           <Icon name="x" size="sm" />
         </button>
       ) : (
-        href && <Icon name="next" size="sm" className="text-text-tertiary shrink-0" />
+        href && !editable && <Icon name="next" size="sm" className="text-text-tertiary shrink-0" />
       )}
     </>
   );
 
-  if (href) {
+  if (href && !editable) {
     return (
       <Link href={href} className={cn('flex items-center gap-3 px-4 py-3', className)}>
         {body}

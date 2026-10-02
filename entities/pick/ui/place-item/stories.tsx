@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { expect, userEvent, within } from 'storybook/test';
 
 import { mockPlaces } from '@/entities/place/model/mock';
 
@@ -88,4 +90,76 @@ export const List: Story = {
       ))}
     </div>
   ),
+};
+
+// 편집 가능 모드: 메모 입력 + 삭제
+export const Editable: Story = {
+  args: {
+    place: mockPlace,
+  },
+  render: function Render() {
+    const [memo, setMemo] = useState('노트북 펼치기 좋은 2층 자리 있음');
+
+    return <PlaceItem place={mockPlace} memo={memo} onMemoChange={setMemo} onRemove={() => {}} />;
+  },
+};
+
+export const EditableEmptyMemo: Story = {
+  args: {
+    place: mockPlace,
+  },
+  render: function Render() {
+    const [memo, setMemo] = useState('');
+
+    return <PlaceItem place={mockPlace} memo={memo} onMemoChange={setMemo} onRemove={() => {}} />;
+  },
+};
+
+// 메모 입력 동작 검증
+export const EditableTyping: Story = {
+  args: {
+    place: mockPlace,
+  },
+  render: function Render() {
+    const [memo, setMemo] = useState('');
+
+    return <PlaceItem place={mockPlace} memo={memo} onMemoChange={setMemo} onRemove={() => {}} />;
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const memoInput = canvas.getByPlaceholderText('메모를 남겨보세요');
+
+    await userEvent.type(memoInput, '창가 자리 추천');
+
+    await expect(memoInput).toHaveValue('창가 자리 추천');
+  },
+};
+
+// 편집 모드에서 삭제 버튼 동작 검증
+export const EditableRemove: Story = {
+  args: {
+    place: mockPlace,
+  },
+  render: function Render() {
+    const [removed, setRemoved] = useState(false);
+
+    if (removed) return <p className="typo-body-s text-text-tertiary">삭제됨</p>;
+
+    return (
+      <PlaceItem
+        place={mockPlace}
+        memo="노트북 펼치기 좋은 2층 자리 있음"
+        onMemoChange={() => {}}
+        onRemove={() => setRemoved(true)}
+      />
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const removeButton = canvas.getByRole('button', { name: `${mockPlace.name} 삭제` });
+
+    await userEvent.click(removeButton);
+
+    await expect(canvas.getByText('삭제됨')).toBeInTheDocument();
+  },
 };
