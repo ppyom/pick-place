@@ -1,0 +1,124 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as TextareaStories from './stories';
+
+<Meta of={TextareaStories} />
+
+# Textarea
+
+여러 줄 텍스트를 입력받는 폼 컨트롤입니다. `Default` / `Error` / `Disabled` 상태를 지원하며, `forwardRef`를 지원해 React Hook Form 등 폼 라이브러리와 연동할 수 있습니다.
+
+<Canvas of={TextareaStories.Default} />
+
+## Props
+
+<Controls />
+
+## Status
+
+<Canvas of={TextareaStories.AllStatuses} />
+
+<table>
+  <thead>
+    <tr>
+      <th>상태</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>default</code>
+      </td>
+      <td>기본 상태. 포커스 시 브랜드 컬러 링이 표시됩니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>error</code>
+      </td>
+      <td>유효성 검증 실패 등 오류 상태. 배경과 링이 error 컬러로 바뀝니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>disabled</code>
+      </td>
+      <td>
+        native <code>disabled</code> 속성 사용. 포커스와 입력이 모두 차단됩니다.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Rows
+
+기본 `rows`는 4입니다. 필요에 맞게 `rows` prop으로 높이를 조정하세요. 사용자가 직접 크기를 조절하면 레이아웃이 깨질 수 있어 `resize`는 비활성화(`resize-none`)했습니다.
+
+## Design Tokens
+
+Textarea는 별도의 Component Token 없이 `Input`과 동일한 Semantic 토큰을 재사용합니다. 둘 다 "텍스트를 입력받는 폼 컨트롤"이라는 같은 역할이라 토큰을 분리할 만큼 특성이 다르지 않다고 판단했습니다.
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Input/Background</td>
+      <td>Surface/Brand-Subtle</td>
+    </tr>
+    <tr>
+      <td>Input/Background-Error</td>
+      <td>Status/Error/Background</td>
+    </tr>
+    <tr>
+      <td>Input/Border-Focus</td>
+      <td>Border/Brand</td>
+    </tr>
+    <tr>
+      <td>Input/Border-Error</td>
+      <td>Status/Error/Border</td>
+    </tr>
+    <tr>
+      <td>Input/Text</td>
+      <td>Text/Primary</td>
+    </tr>
+    <tr>
+      <td>Input/Placeholder</td>
+      <td>Text/Tertiary</td>
+    </tr>
+    <tr>
+      <td>Input/Disabled/Background</td>
+      <td>Surface/Disabled</td>
+    </tr>
+    <tr>
+      <td>Input/Disabled/Text</td>
+      <td>Text/Disabled</td>
+    </tr>
+  </tbody>
+</table>
+
+## Usage
+
+### 기본 사용
+
+```tsx
+<Textarea placeholder="장소에 대한 설명을 적어주세요" />
+```
+
+### 에러 상태
+
+```tsx
+<Textarea status="error" defaultValue="10자 이상 입력해주세요" />
+```
+
+### React Hook Form 연동
+
+`forwardRef`를 지원하므로 `register`를 그대로 스프레드할 수 있습니다.
+
+```tsx
+const { register } = useForm();
+
+<Textarea {...register('description')} placeholder="설명" />;
+```

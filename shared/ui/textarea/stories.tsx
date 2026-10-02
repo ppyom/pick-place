@@ -7,7 +7,7 @@ import { Textarea } from './textarea';
 const meta = {
   title: 'UI/Textarea',
   component: Textarea,
-  tags: [],
+  tags: ['!dev'],
   argTypes: {
     status: { control: 'inline-radio', options: TEXTAREA_STATUSES },
     disabled: { control: 'boolean' },
