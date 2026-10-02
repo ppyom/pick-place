@@ -7,7 +7,7 @@ import { Switch } from './switch';
 const meta = {
   title: 'UI/Switch',
   component: Switch,
-  tags: [],
+  tags: ['!dev'],
   argTypes: {
     checked: { control: 'boolean' },
     disabled: { control: 'boolean' },
