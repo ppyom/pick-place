@@ -1,0 +1,50 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as PlaceAddSheetStories from './stories';
+
+<Meta of={PlaceAddSheetStories} />
+
+# PlaceAddSheet
+
+Pick 작성 페이지에서 장소를 검색하고 여러 개를 한 번에 추가하는 바텀시트입니다. `shared/ui/bottom-sheet`를 사용하며, 열림 상태는 외부에서 제어합니다.
+
+<Canvas of={PlaceAddSheetStories.Controlled} />
+
+## Props
+
+<Controls />
+
+## 다중 선택
+
+목록의 항목을 누르면 선택/해제가 토글됩니다. 새로 선택한 장소가 있으면 하단 버튼에 "N개 추가"가 표시되고, 변경 내용이 없으면 버튼은 비활성화됩니다. 선택은 검색어를 바꿔도 유지됩니다.
+
+## 검색
+
+검색어를 입력하면 장소 이름, 주소, 카테고리로 필터링합니다. 검색어가 비어 있으면 전체 목록을 보여주고, 결과가 없으면 안내 문구를 표시합니다.
+
+## 이미 추가된 장소
+
+`addedPlaceIds`로 전달한 장소는 선택된 상태로 표시됩니다. 선택을 해제하면 삭제 대상이 되며, 버튼에 "N개 삭제"로 표시됩니다. 추가와 삭제가 함께 있으면 "2개 추가 · 1개 삭제"처럼 표시합니다.
+
+삭제는 하단 버튼을 눌러 확정할 때 한 번에 반영됩니다. 확정 전에 시트를 닫으면 변경 내용은 모두 취소되므로, 실수로 해제해도 메모가 사라지지 않습니다.
+
+## 닫힘 동작
+
+닫기 버튼, 오버레이 클릭, ESC로 닫으면 검색어와 선택 상태가 초기화됩니다. 변경을 확정한 뒤에도 같은 방식으로 초기화되고 닫힙니다.
+
+## Usage
+
+`onConfirm`은 새로 선택한 장소(`added`)와 선택을 해제한 기존 장소의 id(`removedIds`)를 전달합니다. 삭제되지 않은 장소의 메모는 부모가 그대로 유지합니다.
+
+```tsx
+const [isOpen, setIsOpen] = useState(false);
+
+<PlaceAddSheet
+  isOpen={isOpen}
+  onClose={() => setIsOpen(false)}
+  onConfirm={({ added, removedIds }) => {
+    remove(removedIds);
+    append(added);
+  }}
+  addedPlaceIds={places.map((place) => place.id)}
+/>;
+```
