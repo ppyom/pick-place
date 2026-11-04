@@ -15,6 +15,7 @@ import {
   MessageSquareTextIcon,
   MoreHorizontalIcon,
   MoreVerticalIcon,
+  PencilIcon,
   PlusIcon,
   SearchIcon,
   SettingsIcon,
@@ -48,6 +49,7 @@ export const ICONS = {
   heart: HeartIcon,
   loading: Loader2Icon,
   camera: CameraIcon,
+  edit: PencilIcon,
 
   // Bottom Navigation
   home: HomeIcon,
