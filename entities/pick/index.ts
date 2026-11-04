@@ -14,4 +14,5 @@ export { usePick } from './model/use-pick';
 export { usePicksByPlace } from './model/use-picks-by-place';
 export { useSavedPicks } from './model/use-saved-picks';
 export { useSearchResults } from './model/use-search-results';
+export { useUpdatePick } from './model/use-update-pick';
 export { PlaceItem } from './ui/place-item/place-item';
