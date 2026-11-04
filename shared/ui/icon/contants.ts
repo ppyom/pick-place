@@ -2,6 +2,7 @@ import {
   BookmarkIcon,
   BusIcon,
   CameraIcon,
+  CheckIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
   CoffeeIcon,
@@ -14,6 +15,7 @@ import {
   MessageSquareTextIcon,
   MoreHorizontalIcon,
   MoreVerticalIcon,
+  PencilIcon,
   PlusIcon,
   SearchIcon,
   SettingsIcon,
@@ -35,6 +37,7 @@ export const ICONS = {
   next: ChevronRightIcon,
   plus: PlusIcon,
   x: XIcon,
+  check: CheckIcon,
   settings: SettingsIcon,
   location: MapPinIcon,
   save: BookmarkIcon,
@@ -46,6 +49,7 @@ export const ICONS = {
   heart: HeartIcon,
   loading: Loader2Icon,
   camera: CameraIcon,
+  edit: PencilIcon,
 
   // Bottom Navigation
   home: HomeIcon,

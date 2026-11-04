@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 
 import { BookmarkToggleButton } from '@/features/toggle-bookmark';
 
-import { PlaceItem, usePick } from '@/entities/pick';
+import { MOCK_CURRENT_USER_ID, PlaceItem, usePick } from '@/entities/pick';
 
 import { ApiError } from '@/shared/api';
 import { AppBar } from '@/shared/ui/app-bar';
@@ -62,6 +62,13 @@ export function PickDetailContent({ id }: Props) {
       <AppBar>
         <AppBar.Back onClick={() => router.back()} />
         <AppBar.Title>{pick.title}</AppBar.Title>
+        {pick.author.id === MOCK_CURRENT_USER_ID && (
+          <AppBar.RightAction
+            icon="edit"
+            label="Pick 수정"
+            onClick={() => router.push(`/picks/${pick.id}/edit`)}
+          />
+        )}
       </AppBar>
 
       <div className="space-y-4 pt-15">

@@ -74,7 +74,7 @@ Next.js App Router의 라우팅 폴더(`app/`)와 FSD 레이어 이름이 겹치
 app/            # ⚠️ Next.js 라우팅 전용 (FSD 레이어 아님)
 ├── (routes)/
 │   ├── explore/page.tsx
-│   ├── collections/[id]/page.tsx
+│   ├── picks/[id]/page.tsx
 │   ├── places/[id]/page.tsx
 │   ├── my/page.tsx
 │   └── login/page.tsx

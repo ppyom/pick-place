@@ -101,7 +101,7 @@ export function MyContent() {
             variant="primary"
             size="icon"
             aria-label="Pick 만들기"
-            onClick={() => router.push('/collections/new')}
+            onClick={() => router.push('/picks/new')}
             className="pointer-events-auto rounded-full shadow-lg"
           >
             <Icon name="plus" size="md" />

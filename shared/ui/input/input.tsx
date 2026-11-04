@@ -12,12 +12,12 @@ interface Props extends InputHTMLAttributes<HTMLInputElement>, Pick<InputVariant
 export const Input = forwardRef<HTMLInputElement, Props>(
   ({ className, leftIcon, status, ...props }, ref) => {
     return (
-      <div className="relative">
+      <div className={cn('relative w-full', className)}>
         {leftIcon && <Icon className={inputIconVariants({ status })} name={leftIcon} size="sm" />}
         <input
           ref={ref}
           aria-invalid={status === 'error' || undefined}
-          className={cn(inputVariants({ status, hasLeftIcon: !!leftIcon }), className)}
+          className={inputVariants({ status, hasLeftIcon: !!leftIcon })}
           {...props}
         />
       </div>

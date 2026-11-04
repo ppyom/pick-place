@@ -1,0 +1,132 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as SwitchStories from './stories';
+
+<Meta of={SwitchStories} />
+
+# Switch
+
+켜짐/꺼짐 상태를 토글하는 폼 컨트롤입니다. 공개 여부처럼 두 상태 중 하나를 즉시 반영해야 하는
+경우에 사용합니다. 항상 `checked` / `onCheckedChange`로 외부에서 제어하는 Controlled
+컴포넌트이며, 네이티브 `<input type="checkbox">` 대신 `role="switch"` 버튼으로 구현했습니다.
+
+<Canvas of={SwitchStories.Unchecked} />
+
+## Props
+
+<Controls />
+
+## Status
+
+<table>
+  <thead>
+    <tr>
+      <th>상태</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>checked=false</code>
+      </td>
+      <td>꺼짐 상태. 트랙 배경은 Surface/Secondary입니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>checked=true</code>
+      </td>
+      <td>켜짐 상태. 트랙 배경이 Surface/Brand로 바뀌고 thumb가 오른쪽으로 이동합니다.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>disabled</code>
+      </td>
+      <td>
+        `aria-disabled` 패턴을 사용합니다(네이티브 <code>disabled</code> 아님). 클릭이 막히고 트랙
+        배경이 Surface/Disabled로 바뀝니다.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<Canvas of={SwitchStories.Checked} />
+<Canvas of={SwitchStories.Disabled} />
+<Canvas of={SwitchStories.DisabledChecked} />
+
+## Controlled 사용
+
+`checked`와 `onCheckedChange`를 직접 상태와 연결해서 사용합니다.
+
+<Canvas of={SwitchStories.Controlled} />
+
+```tsx
+const [checked, setChecked] = useState(false);
+
+<Switch checked={checked} onCheckedChange={setChecked} />;
+```
+
+## Design Tokens
+
+Switch는 별도의 Component Token 없이 기존 Semantic 토큰을 재사용합니다. thumb(흰 동그라미)는
+트랙 상태와 무관하게 항상 흰색이어야 하고 재사용성이 낮아, Semantic으로 승격하지 않고 예외적으로
+Primitive `White`를 직접 참조합니다.
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Track/On</td>
+      <td>Surface/Brand</td>
+    </tr>
+    <tr>
+      <td>Track/Off</td>
+      <td>Surface/Secondary</td>
+    </tr>
+    <tr>
+      <td>Track/Disabled</td>
+      <td>Surface/Disabled</td>
+    </tr>
+    <tr>
+      <td>Thumb</td>
+      <td>White (Primitive, 예외)</td>
+    </tr>
+  </tbody>
+</table>
+
+## Usage
+
+### 기본 사용
+
+```tsx
+<Switch checked={isPublic} onCheckedChange={setIsPublic} />
+```
+
+### Label과 함께 (Field)
+
+도메인 지식 없는 범용 `Field` + `Label`과 조합해서 사용합니다.
+
+```tsx
+<Field>
+  <Label htmlFor="is-public">공개 여부</Label>
+  <Switch id="is-public" checked={isPublic} onCheckedChange={setIsPublic} />
+</Field>
+```
+
+### React Hook Form 연동
+
+네이티브 input이 아니라 `ref`를 받지 않으므로 `register` 대신 `Controller`로 연결합니다.
+
+```tsx
+const { control } = useForm();
+
+<Controller
+  name="isPublic"
+  control={control}
+  render={({ field }) => <Switch checked={field.value} onCheckedChange={field.onChange} />}
+/>;
+```

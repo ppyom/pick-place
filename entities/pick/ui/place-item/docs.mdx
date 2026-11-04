@@ -6,7 +6,7 @@ import * as PlaceItemStories from './stories';
 
 # PlaceItem
 
-Pick에 담긴 장소 1건(썸네일 + 이름 + 주소 + 메모)을 보여주는 row 컴포넌트입니다. `PickPlaceItem`(`place` + `memo`)을 기반으로 하며, 기본적으로 read-only이지만 `onRemove`를 통해 편집 가능한 형태로도 재사용할 수 있습니다.
+Pick에 담긴 장소 1건(썸네일 + 이름 + 주소 + 메모)을 보여주는 row 컴포넌트입니다. `PickPlaceItem`(`place` + `memo`)을 기반으로 하며, 기본적으로 read-only이지만 `onRemove` / `onMemoChange`를 통해 편집 가능한 형태로도 재사용할 수 있습니다.
 
 ## 기본 사용
 
@@ -41,6 +41,17 @@ Pick에 담긴 장소 1건(썸네일 + 이름 + 주소 + 메모)을 보여주는
 `onRemove`를 전달하면 우측에 `>` 아이콘 대신 삭제 버튼이 표시됩니다. Pick 작성 페이지처럼 편집 가능한 목록에서 사용합니다. `href`와 `onRemove`가 함께 전달되면 `onRemove`가 우선합니다.
 
 <Canvas of={PlaceItemStories.Removable} />
+
+## 편집 가능 모드 (메모 입력)
+
+`onMemoChange`를 전달하면 메모 영역이 읽기 전용 텍스트 대신 `Input`으로 바뀌어 직접 타이핑할 수 있습니다.
+
+Pick 작성 페이지의 "장소 추가" 바텀시트에서 담은 장소마다 메모를 남길 때 사용하며, `onMemoChange`가 있으면 `href`가 함께 전달되어도 `Link`로 감싸지 않습니다(타이핑 중 실수로 페이지 이동되는 것을 방지).
+
+보통 `onRemove`와 함께 써서 메모 입력과 삭제를 동시에 지원합니다.
+
+<Canvas of={PlaceItemStories.Editable} />
+<Canvas of={PlaceItemStories.EditableEmptyMemo} />
 
 ## 목록에서 사용
 
