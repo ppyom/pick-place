@@ -54,7 +54,7 @@ test.describe('마이페이지', () => {
     await expect(page.getByRole('button', { name: 'Pick 만들기' })).toBeVisible();
     await page.getByRole('button', { name: 'Pick 만들기' }).click();
 
-    await page.waitForURL('/collections/new');
+    await page.waitForURL('/picks/new');
   });
 
   test('저장한 Pick 탭에서는 Pick 만들기 버튼이 노출되지 않는다', async ({ page }) => {
