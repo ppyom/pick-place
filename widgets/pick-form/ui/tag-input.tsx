@@ -26,6 +26,9 @@ export function TagInput({ value, onChange, className }: Props) {
           className="flex-1"
           value={inputValue}
           onChange={(event) => setInputValue(event.target.value)}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter') event.preventDefault();
+          }}
           placeholder={isFull ? `최대 ${MAX_TAGS}개까지 추가할 수 있어요` : '태그를 입력해보세요'}
           disabled={isFull}
         />

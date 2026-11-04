@@ -131,3 +131,32 @@ export const StopsAtMax: Story = {
     await expect(canvas.getByRole('button', { name: '추가' })).toBeDisabled();
   },
 };
+
+// 폼 안에서 Enter를 눌러도 제출되지 않고 태그도 확정되지 않는지 검증
+export const IgnoresEnter: Story = {
+  render: function Render() {
+    const [tags, setTags] = useState<string[]>([]);
+    const [submitted, setSubmitted] = useState(false);
+
+    return (
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          setSubmitted(true);
+        }}
+      >
+        <TagInput value={tags} onChange={setTags} />
+        <button type="submit">제출</button>
+        <p>{submitted ? '제출됨' : '제출 안 됨'}</p>
+      </form>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    await userEvent.type(canvas.getByPlaceholderText('태그를 입력해보세요'), '성수{Enter}');
+
+    await expect(canvas.getByText('제출 안 됨')).toBeInTheDocument();
+    await expect(canvas.queryByText('#성수')).not.toBeInTheDocument();
+  },
+};
